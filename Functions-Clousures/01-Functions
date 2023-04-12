@@ -1,5 +1,6 @@
 import Foundation
 
+
 // MARK: 1. Func without parameters
 func sayHello() {
   print("Hello, world!")

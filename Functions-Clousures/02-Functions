@@ -1,0 +1,101 @@
+import Foundation
+
+
+// MARK: 1. Return values
+func moduleInfo(topic: String, number: Int) -> String {
+    "Я изучаю \(topic) из модуля \(number)"
+}
+
+let info = moduleInfo(topic: "Функции", number: 13)
+print(info)
+
+
+// MARK: 2. Default values
+func sayHello(name: String = "Steve") {
+  print("Hello, \(name)!")
+}
+ 
+sayHello()
+// "Hello, Steve!"
+sayHello(name: "Tim")
+// "Hello, Tim!"
+
+
+// MARK: 3. External parameter names
+func codeError(codeErrorFromServer code: Int, descriptionErrorFromServer description: String) {
+  print("Error: \(code) Description: \(description)")
+}
+
+codeError(codeErrorFromServer: 404, descriptionErrorFromServer: "Not Found")
+
+// Example
+func coffeeMachine(someFavoriteCoffee coffee: String, theRightAmountOfWater water: Float, forWhomСoffeeBrewed name: String) -> String {
+  return "wonderful coffee with a volume of \(water) milliliters is ready, made from \(coffee) varieties by order of the respected \(name)"
+}
+ 
+let result = coffeeMachine(someFavoriteCoffee: "arabica", theRightAmountOfWater: 300, forWhomСoffeeBrewed: "Jen Snow")
+print(result)
+
+
+// MARK: 4. Functional types
+func isEven(number: Int) -> Bool {
+    number % 2 == 0
+}
+
+// Now let's write a function that will take the isEven function as a parameter and convert its result into the String type:
+
+func generateNumberString(number: Int, checkFunction: (Int) -> Bool) -> String {
+  let isEven = checkFunction(number)       // Passed the function as a parameter isEven(5)
+  return isEven ? "Чётное" : "Нечётное"
+}
+ 
+let string = generateNumberString(number: 5, checkFunction: isEven)
+print(string)
+
+
+// MARK: 5. Nested functions
+func bigBoss(messageFromEmployeeJohn: inout String, messageFromEmployeeKate: inout String) {
+  func employeeJohn() {
+    messageFromEmployeeJohn += "I got your message boss!"
+  }
+  func employeeKate() {
+    messageFromEmployeeKate += "I got your message boss!"
+  }
+  employeeJohn()
+  employeeKate()
+}
+
+var johnMessage = "employee John: "
+var kateMessage = "employee Kate: "
+ 
+bigBoss(messageFromEmployeeJohn: &johnMessage, messageFromEmployeeKate: &kateMessage)
+print(johnMessage)
+print(kateMessage)
+
+
+// MARK: 6. Recursive functions
+func recursiveCounter(number: Int) {
+  if number < 100 {
+    recursiveCounter(number: number + 1)
+    print(number + 1)
+  }
+}
+
+recursiveCounter(number: 2)
+
+
+// MARK: 7. Overloading functions (similar names)
+func helloFunc(param: Bool) {
+  print(param)
+}
+ 
+func helloFunc(param: String) {
+  print(param)
+}
+func helloFunc(param: Int ) {
+  print(param)
+}
+ 
+helloFunc(param: true)
+helloFunc(param: "string text")
+helloFunc(param: 5)
