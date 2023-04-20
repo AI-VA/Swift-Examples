@@ -1,0 +1,69 @@
+import Foundation
+
+
+// MARK: 1. Структуры
+
+struct ChessPlayer {
+  var name: String
+  var nickname: String
+  var age: Int
+  var victory: Int
+  var defeat: Int
+    
+}
+
+// var semen это обьект структуры который будет иметь доступ к свойствам
+// Справа от равно передаем значения встроенному инициализатору
+var semen = ChessPlayer(name: "Semen", nickname: "Shark", age: 23, victory: 32, defeat: 4)
+print(semen.name)
+
+// Изменяем свойства
+semen.name = "Jon"
+semen.nickname = "OldMan"
+semen.age = 50
+semen.victory = 0
+semen.defeat = 32
+
+print(semen.name)
+
+
+// MARK: 2. Методы
+// Методы — это функции, которые ассоциируются с определенным «типом». Методы — это функции, встроенные в структуры или классы.
+
+struct ChessPlayer {
+  var name: String
+  var nickname: String
+  var age: Int
+  var victory: Int
+  var defeat: Int
+
+ func thisIsMethod() {
+     print("Привет, я шахматист!")
+     
+ }
+}
+
+let semen = ChessPlayer(name: "Semen", nickname: "Shark", age: 23, victory: 32, defeat: 4)
+semen.thisIsMethod()
+
+
+// MARK: 3. Создание собственных инициализаторов
+
+struct ChessPlayer {
+    let name: String = "Semen"
+    let nickname: String = "Shark"
+    var age: Int = 0
+    var victory: Int = 0
+    var defeat: Int = 0
+    
+    init (age: Int) {
+        self.age = age
+    }
+    
+    func printChessPlayerPropery () {
+        print("Player name: \(name) nickname: \(nickname) age: \(age) victory: \(victory) defeat: \(defeat)")
+    }
+}
+// Меняем свойство через свой init инициализатор
+let semen = ChessPlayer (age: 32)
+semen.printChessPlayerPropery()

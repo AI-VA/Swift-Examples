@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3223F6A329F10B7A001A2732 /* 04-Structs in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A229F10B7A001A2732 /* 04-Structs */; };
+		3223F6A529F11D18001A2732 /* 05-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A429F11D18001A2732 /* 05-Classes */; };
+		3223F6A729F158F3001A2732 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A629F158F3001A2732 /* main.swift */; };
 		3259DCE829E432BF005B9391 /* 01-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 3259DCE729E432BF005B9391 /* 01-Functions */; };
-		32F807C929E532A2002B8C5A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F807C829E532A2002B8C5A /* main.swift */; };
+		32C3A64C29E697640036B410 /* 03-Clousures in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A64B29E697640036B410 /* 03-Clousures */; };
 		32F807CC29E54F78002B8C5A /* 02-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 32F807CB29E54F78002B8C5A /* 02-Functions */; };
 /* End PBXBuildFile section */
 
@@ -25,10 +28,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3223F6A229F10B7A001A2732 /* 04-Structs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "04-Structs"; sourceTree = "<group>"; };
+		3223F6A429F11D18001A2732 /* 05-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "05-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3223F6A629F158F3001A2732 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3259DCE729E432BF005B9391 /* 01-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "01-Functions"; sourceTree = "<group>"; };
+		32C3A64B29E697640036B410 /* 03-Clousures */ = {isa = PBXFileReference; lastKnownFileType = text; path = "03-Clousures"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32EC8F8A29E3D6D900AFE405 /* SwiftExamples */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftExamples; sourceTree = BUILT_PRODUCTS_DIR; };
-		32F807C829E532A2002B8C5A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		32F807CB29E54F78002B8C5A /* 02-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "02-Functions"; sourceTree = "<group>"; };
+		32F807CB29E54F78002B8C5A /* 02-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "02-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,20 +48,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3259DCE629E4321E005B9391 /* Functions-Clousures */ = {
+		3259DCE629E4321E005B9391 /* Code Examples */ = {
 			isa = PBXGroup;
 			children = (
 				3259DCE729E432BF005B9391 /* 01-Functions */,
 				32F807CB29E54F78002B8C5A /* 02-Functions */,
+				32C3A64B29E697640036B410 /* 03-Clousures */,
+				3223F6A229F10B7A001A2732 /* 04-Structs */,
+				3223F6A429F11D18001A2732 /* 05-Classes */,
 			);
-			path = "Functions-Clousures";
+			path = "Code Examples";
 			sourceTree = "<group>";
 		};
 		32EC8F8129E3D6D900AFE405 = {
 			isa = PBXGroup;
 			children = (
-				32F807C829E532A2002B8C5A /* main.swift */,
-				3259DCE629E4321E005B9391 /* Functions-Clousures */,
+				3223F6A629F158F3001A2732 /* main.swift */,
+				3259DCE629E4321E005B9391 /* Code Examples */,
 				32EC8F8B29E3D6D900AFE405 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,7 +137,10 @@
 			files = (
 				32F807CC29E54F78002B8C5A /* 02-Functions in Sources */,
 				3259DCE829E432BF005B9391 /* 01-Functions in Sources */,
-				32F807C929E532A2002B8C5A /* main.swift in Sources */,
+				3223F6A729F158F3001A2732 /* main.swift in Sources */,
+				3223F6A529F11D18001A2732 /* 05-Classes in Sources */,
+				3223F6A329F10B7A001A2732 /* 04-Structs in Sources */,
+				32C3A64C29E697640036B410 /* 03-Clousures in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
