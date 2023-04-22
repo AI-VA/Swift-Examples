@@ -11,7 +11,11 @@
 		3223F6A529F11D18001A2732 /* 05-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A429F11D18001A2732 /* 05-Classes */; };
 		3223F6A729F158F3001A2732 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A629F158F3001A2732 /* main.swift */; };
 		3259DCE829E432BF005B9391 /* 01-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 3259DCE729E432BF005B9391 /* 01-Functions */; };
+		3278290D29F26DBB003D1678 /* 06-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3278290C29F26DBB003D1678 /* 06-Classes */; };
+		3278290F29F27656003D1678 /* 07-Inheritance in Sources */ = {isa = PBXBuildFile; fileRef = 3278290E29F27656003D1678 /* 07-Inheritance */; };
 		32C3A64C29E697640036B410 /* 03-Clousures in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A64B29E697640036B410 /* 03-Clousures */; };
+		32E57EDD29F3B3F3000A1718 /* 08-Polymorphism in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */; };
+		32E57EDF29F3CBED000A1718 /* 09-Encapsulation in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDE29F3CBED000A1718 /* 09-Encapsulation */; };
 		32F807CC29E54F78002B8C5A /* 02-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 32F807CB29E54F78002B8C5A /* 02-Functions */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +36,11 @@
 		3223F6A429F11D18001A2732 /* 05-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "05-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A629F158F3001A2732 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3259DCE729E432BF005B9391 /* 01-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "01-Functions"; sourceTree = "<group>"; };
+		3278290C29F26DBB003D1678 /* 06-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "06-Classes"; sourceTree = "<group>"; };
+		3278290E29F27656003D1678 /* 07-Inheritance */ = {isa = PBXFileReference; lastKnownFileType = text; path = "07-Inheritance"; sourceTree = "<group>"; };
 		32C3A64B29E697640036B410 /* 03-Clousures */ = {isa = PBXFileReference; lastKnownFileType = text; path = "03-Clousures"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */ = {isa = PBXFileReference; lastKnownFileType = text; path = "08-Polymorphism"; sourceTree = "<group>"; };
+		32E57EDE29F3CBED000A1718 /* 09-Encapsulation */ = {isa = PBXFileReference; lastKnownFileType = text; path = "09-Encapsulation"; sourceTree = "<group>"; };
 		32EC8F8A29E3D6D900AFE405 /* SwiftExamples */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftExamples; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F807CB29E54F78002B8C5A /* 02-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "02-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -56,6 +64,10 @@
 				32C3A64B29E697640036B410 /* 03-Clousures */,
 				3223F6A229F10B7A001A2732 /* 04-Structs */,
 				3223F6A429F11D18001A2732 /* 05-Classes */,
+				3278290C29F26DBB003D1678 /* 06-Classes */,
+				3278290E29F27656003D1678 /* 07-Inheritance */,
+				32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */,
+				32E57EDE29F3CBED000A1718 /* 09-Encapsulation */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -136,10 +148,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F807CC29E54F78002B8C5A /* 02-Functions in Sources */,
+				3278290D29F26DBB003D1678 /* 06-Classes in Sources */,
 				3259DCE829E432BF005B9391 /* 01-Functions in Sources */,
 				3223F6A729F158F3001A2732 /* main.swift in Sources */,
 				3223F6A529F11D18001A2732 /* 05-Classes in Sources */,
+				32E57EDF29F3CBED000A1718 /* 09-Encapsulation in Sources */,
 				3223F6A329F10B7A001A2732 /* 04-Structs in Sources */,
+				3278290F29F27656003D1678 /* 07-Inheritance in Sources */,
+				32E57EDD29F3B3F3000A1718 /* 08-Polymorphism in Sources */,
 				32C3A64C29E697640036B410 /* 03-Clousures in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

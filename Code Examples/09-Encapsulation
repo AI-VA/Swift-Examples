@@ -1,0 +1,88 @@
+import Foundation
+
+
+// MARK: 1. Инкапсуляция и области видимости
+// Инкапсулировать означает поместить что-то в капсулу, т.е. что-то скрыть, спрятать или защитить.
+
+class Transoprt {
+    var name: String
+    var maxSpeed: Int
+ 
+    init(name: String, maxSpeed: Int) {
+        self.name = name
+        self.maxSpeed = maxSpeed
+    }
+ 
+    func printName() {
+        print(self.name)
+    }
+}
+
+// Протокол — это набор правил и требований, которые должны быть выполнены типом,
+// который их реализует (классом, структурой или перечислением).
+protocol HasPowerReserve {
+    var powerReserve: Double { get }
+}
+
+class Car: Transoprt, HasPowerReserve {
+    var fuelInTank: Int
+    var fuelConsumption: Double
+ 
+    var powerReserve: Double {
+        Double(fuelInTank) / fuelConsumption * 100
+    }
+ 
+    init(maxSpeed: Int, fuelInTank: Int, fuelConsumption: Double) {
+        self.fuelInTank = fuelInTank
+        self.fuelConsumption = fuelConsumption
+        super.init(name: "Car", maxSpeed: maxSpeed)
+    }
+}
+ 
+let car2 = Car(maxSpeed: 250, fuelInTank: 100, fuelConsumption: 1.5)
+car2.printName()
+print(car2.powerReserve)
+
+
+class ElectricScooter: Transoprt, HasPowerReserve  {
+    var chargeLevel: Double
+    var maxDistance: Double
+ 
+    var powerReserve: Double {
+        maxDistance * chargeLevel
+    }
+ 
+    init(maxSpeed: Int, chargeLevel: Double, maxDistance: Double) {
+        self.chargeLevel = chargeLevel
+        self.maxDistance = maxDistance
+        super.init(name: "ElectricScooter", maxSpeed: maxSpeed)
+    }
+}
+
+
+var transports: [HasPowerReserve] = [
+    Car(maxSpeed: 250, fuelInTank: 100, fuelConsumption: 2.5),
+    ElectricScooter(maxSpeed: 25, chargeLevel: 0.7, maxDistance: 30)
+]
+
+for transport in transports {
+    print(transport.powerReserve)
+}
+
+class Plane: Transoprt {
+    init() {
+        super.init (name: "Plane", maxSpeed: 1000)
+    }
+    
+    func printMaxSpeedInMiles() {
+        print(kmToMiles(km: maxSpeed)) // передается maxSpeed из init
+    }
+    // private виден только внутри класса
+    private func kmToMiles(km: Int) -> Double {
+        let miles = Double(km) / 1.6
+        return miles
+    }
+}
+
+let plane = Plane()
+plane.printMaxSpeedInMiles()

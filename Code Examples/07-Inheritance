@@ -1,0 +1,97 @@
+import Foundation
+
+
+// MARK: 1. Наследование
+// Когда один класс наследует другой класс, то наследующий класс (класс, который наследует методы/свойства другого класса) называется подклассом, а класс, который наследуют (класс, чьи методы/свойства наследуют) — суперклассом.
+
+class Transport {
+    var model: String
+    var color: String
+    
+    init(model: String, color: String) {
+        self.model = model
+        self.color = color
+    }
+    
+    func printCar() {
+        print(self.model)
+    }
+}
+
+let carName = Transport(model: "BMW", color: "Red")
+print(carName.model)
+
+
+
+class Car: Transport {
+    var fuelTank: Int
+    var fuelConcuption: Int
+    
+    var powerReserve: Int {
+        return fuelTank / fuelConcuption * 100
+    }
+    
+    init(fuelTank: Int, fuelConcuption: Int) {
+        self.fuelTank = fuelTank
+        self.fuelConcuption = fuelConcuption
+        super.init(model: "Audi", color: "Blue")
+    }
+}
+
+let carName2 = Car(fuelTank: 100, fuelConcuption: 50)
+print(carName2.powerReserve)
+
+
+// Переопределение (override)
+// Для переопределения унаследованных характеристик вы добавляете к переписываемому методу ключевое слово override. Делая так, вы показываете своё намерение провести переопределение, и говорите, что оно будет сделано не по ошибке:
+
+class Transoprt {
+    var name: String
+    var maxSpeed: Int
+ 
+    init(name: String, maxSpeed: Int) {
+        self.name = name
+        self.maxSpeed = maxSpeed
+    }
+ 
+    func printName() {
+        print(self.name)
+    }
+ 
+    func makeSound() {
+        print("Some sound")
+    }
+}
+ 
+class Car: Transport {
+    override func makeSound() {
+        print("Vroom-Vroom")
+    }
+}
+
+// Запрет переопределения и наследования
+// Для того чтобы запретить переопределение методов и свойств, вы можете обозначить их конечными при помощи ключевого слова final.
+// Важно отметить, что вы можете обозначать как сами свойства/методы конечными при помощи final (к примеру, final let, final var, final func), так и весь класс целиком (в коде это будет выглядеть так — final class):
+
+final class Transoprt {
+    var name: String
+    var maxSpeed: Int
+ 
+    init(name: String, maxSpeed: Int) {
+        self.name = name
+        self.maxSpeed = maxSpeed
+    }
+ 
+    func printName() {
+        print(self.name)
+    }
+ 
+    func makeSound() {
+        print("Some sound")
+    }
+}
+ 
+class Car: Transport {
+
+}
+//Данный код вызовет ошибку, так как есть попытка наследования final класса.
