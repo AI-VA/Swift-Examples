@@ -1,0 +1,70 @@
+import Foundation
+
+
+// MARK: 1. Опциональное связывание (optinal binding)
+
+let a: Int = 1
+let b: Int? = 1
+let c: Int? = nil
+
+// Создается новая переменная и в нее помещается опционал
+if let usualB = b {
+    print(a + usualB)
+} else {
+    print ("B b нет значения")
+}
+
+// Новый синтаксис
+if let b {
+    print(a + b)
+} else {
+    print("nil")
+}
+
+if let usualC = c {
+    print(a + usualC)
+} else {
+    print ("В с нет значения")
+}
+
+
+// MARK: 2. Принудительное извлечение (forced unwrapping)
+// Менее опасная распаковка так как указываем привызове знак!
+let numberOne: Int = 3
+let numberTwo: Int? = 4
+
+let answer = numberOne + numberTwo!
+print (answer)
+
+
+// MARK: 3. Неявное извлечение (implicitly unwrapping)
+// Наиболее опасная распаковка так как указывается еще до начала вызова
+var numberOne: Int! = 5
+var numberTwo = 6
+
+let answer = numberOne + numberTwo
+
+// Вы видите, нам не пришлось явно извлекать значение из numberOne. Следствием этого является то, что вы должны быть уверены, что неявно извлеченный опционал не будет иметь значение nil при обращении к нему. Неявно извлеченный опционал аналогичен разрешению автоматически принудительно извлекать опционал при каждом его использовании.
+
+
+// MARK: 4. Оператор объединения по nil (nil coalescing)
+
+var numberOne: Int? = nil
+var numberTwo = 6
+let answer = (numberOne ?? 0) + numberTwo // 6
+
+
+// MARK: 5. Функция readLine
+
+print("Введите ваше имя: ")
+var name = readLine() ?? ""
+print(name)
+
+// Другой пример
+print("Введите ваше имя: ")
+
+if let name = readLine() {
+    print("Привет: \(name)")
+} else {
+    print("Вы не ввели имя")
+}

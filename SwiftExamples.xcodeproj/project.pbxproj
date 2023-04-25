@@ -11,6 +11,7 @@
 		3223F6A529F11D18001A2732 /* 05-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A429F11D18001A2732 /* 05-Classes */; };
 		3223F6A729F158F3001A2732 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A629F158F3001A2732 /* main.swift */; };
 		3259DCE829E432BF005B9391 /* 01-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 3259DCE729E432BF005B9391 /* 01-Functions */; };
+		32606C8829F6A06E00CEBA3B /* 10-Optionals in Sources */ = {isa = PBXBuildFile; fileRef = 32606C8729F6A06E00CEBA3B /* 10-Optionals */; };
 		3278290D29F26DBB003D1678 /* 06-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3278290C29F26DBB003D1678 /* 06-Classes */; };
 		3278290F29F27656003D1678 /* 07-Inheritance in Sources */ = {isa = PBXBuildFile; fileRef = 3278290E29F27656003D1678 /* 07-Inheritance */; };
 		32C3A64C29E697640036B410 /* 03-Clousures in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A64B29E697640036B410 /* 03-Clousures */; };
@@ -36,6 +37,7 @@
 		3223F6A429F11D18001A2732 /* 05-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "05-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A629F158F3001A2732 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3259DCE729E432BF005B9391 /* 01-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "01-Functions"; sourceTree = "<group>"; };
+		32606C8729F6A06E00CEBA3B /* 10-Optionals */ = {isa = PBXFileReference; lastKnownFileType = text; path = "10-Optionals"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3278290C29F26DBB003D1678 /* 06-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "06-Classes"; sourceTree = "<group>"; };
 		3278290E29F27656003D1678 /* 07-Inheritance */ = {isa = PBXFileReference; lastKnownFileType = text; path = "07-Inheritance"; sourceTree = "<group>"; };
 		32C3A64B29E697640036B410 /* 03-Clousures */ = {isa = PBXFileReference; lastKnownFileType = text; path = "03-Clousures"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -68,6 +70,7 @@
 				3278290E29F27656003D1678 /* 07-Inheritance */,
 				32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */,
 				32E57EDE29F3CBED000A1718 /* 09-Encapsulation */,
+				32606C8729F6A06E00CEBA3B /* 10-Optionals */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				3278290D29F26DBB003D1678 /* 06-Classes in Sources */,
 				3259DCE829E432BF005B9391 /* 01-Functions in Sources */,
 				3223F6A729F158F3001A2732 /* main.swift in Sources */,
+				32606C8829F6A06E00CEBA3B /* 10-Optionals in Sources */,
 				3223F6A529F11D18001A2732 /* 05-Classes in Sources */,
 				32E57EDF29F3CBED000A1718 /* 09-Encapsulation in Sources */,
 				3223F6A329F10B7A001A2732 /* 04-Structs in Sources */,
