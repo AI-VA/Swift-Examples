@@ -1,0 +1,315 @@
+import Foundation
+
+
+// MARK: 1. Перечисления
+// Это объектный тип данных, который предоставляет доступ к различным значениям, его нужно рассматривать как перечень возможных констант.
+
+let ruble = "Ruble"
+let dollar = "Dollar"
+let euro = "Euro"
+let brazilianReal = "Brazilian real"
+let uaeDirham = "UAE dirham"
+
+// Сокращаем список констант
+enum Currencies {
+    case ruble
+    case dollar
+    case euro
+    case brazilianReal
+    case uaeDirham
+}
+
+// Вариант сокращения в одну строку
+// Первым делом давайте создадим экземпляр перечисления и получим доступ к валюте доллар:
+enum Currencies {
+    case ruble, dollar, euro, brazilianReal, uaeDirham
+}
+
+let currency = Currencies.dollar
+
+// Так же можно создать константу типа Currencies, а затем присвоить нужный элемент:
+enum Currencies {
+    case ruble, dollar, euro, brazilianReal, uaeDirham
+}
+// Присваивается значение константе
+let currency: Currencies
+currency = .euro
+
+
+// MARK: 2. Ассоциированные параметры
+// Это значит, что напротив каждого элемента мы можем поставить круглые скобки и в них добавить любое количество аргументов, всё как в функциях
+
+// Добавим в качестве первого аргумента название страны, в которой используется наша валюта, а вторым аргументом будет сокращённое название этой валюты.
+enum Currencies {
+    case ruble (country: String, shortName: String)
+    case dollar (country: String, shortName: String)
+    case euro (country: String, shortName: String)
+    case brazilianReal (country: String, shortName: String)
+    case uaeDirham (country: String, shortName: String)
+}
+// Давайте воспользуемся ситуацией и вызовем российскую валюту. Это делается как и раньше, чем-то напоминает вызов функции.
+let currency: Currencies
+currency = .ruble (country: "Russia", shortName: "RUR")
+
+
+// Давайте не будем на этом останавливаться и создадим ещё одно перечисление с именем CountriesUsingEuro. Из названия понятно, что там будут страны, которые используют евро как валюту.
+enum CountriesUsingEuro {
+    case austria, belgium, cyprus, finland
+}
+
+enum Currencies {
+    case ruble (country: String, shortName: String)
+    case dollar (country: String, shortName: String)
+    // Давайте применим перечисление CountriesUsingEuro к члену евро в качестве дополнительного аргумента. А что? Мы это легко можем!
+    case euro (country: String, shortName: String, europeanUnion: CountriesUsingEuro)
+    case brazilianReal (country: String, shortName: String)
+}
+// Ну и в завершении давайте создадим константу с именем euroZone, которая будет иметь тип Currencies
+let euroZone: Currencies
+euroZone = .euro (country: "Austria", shortName: "EUR", europeanUnion: .austria)
+print(euroZone)
+
+
+// MARK: 3. Вложенные перечисления
+// Чтобы создать вложенные перечисления, нужно всего лишь перечислить те энумы, которые используются только родительским перечислением. Наш родитель — это Currencies, и сейчас у нас нет ни классов, ни структур, которые могли бы нам помешать сделать это.
+
+// Давайте перенесем CountriesUsingEuro и CountriesUsingDollar непосредственно в тело родителя!
+enum Currencies {
+    enum CountriesUsingDollar {
+        case usa, australia, canada
+    }
+    enum CountriesUsingEuro {
+        case austria, belgium, cyprus, finland
+    }
+}
+
+// Теперь в теле нашего родителя содержатся два потомка, которые используются в области видимости родителя. Это и называется вложенными перечислениями, то есть мы вкладываем одно в другое. И теперь, чтобы получить доступ, например, к CountriesUsingEuro, нам необходимо построить конструкцию доступов: сначала получаем доступ к родителю, затем к потомку и только после к этого к какому-то определенному члену.
+let countriesUsingEuro = Currencies.CountriesUsingEuro.austria
+
+
+// В качестве удобного механизма получения данных в перечислениях используется оператор switch. Это супер удобная вещь, когда нам нужно проверить разные входные значения.
+// Вот такой вот switch у нас получится, в качестве самого «переключателя» мы использовали euroZone, которую создали ранее, и добавили все необходимые аргументы.
+// А уже сам переключатель разбирается, что в него пришло — то ли это доллар, то ли рубль. И в результате вычислений выводит результат в консоль.
+
+enum Currencies {
+    enum CountriesUsingDollar {
+        case usa, australia, canada
+    }
+    enum CountriesUsingEuro {
+        case austria, belgium, cyprus, finland
+    }
+
+    case ruble (country: String, shortName: String)
+    case dollar (country: String, shortName: String, dollarZone: CountriesUsingDollar)
+    case euro (country: String, shortName: String, europeanUnion: CountriesUsingEuro)
+    case brazilianReal (country: String, shortName: String)
+    case uaeDirham (country: String, shortName: String)
+}
+
+let euroZone: Currencies
+euroZone = .euro(country: "Austria", shortName: "EUR", europeanUnion: .austria)
+
+switch euroZone {
+case let .ruble (country: country, shortName: shortName):
+    print("abbreviated currency name \(country): \(shortName)")
+case let .dollar(country: country, shortName: shortName, dollarZone: dollarZone):
+    print("abbreviated currency name \(country): \(shortName). You choose country using euro: \(dollarZone)")
+case let .euro (country: country, shortName: shortName, europeanUnion: europeanUnion):
+    print("abbreviated currency name \(country): \(shortName). You choose country using dollar: \(europeanUnion)")
+case let .brazilianReal (country: country, shortName: shortName):
+    print("abbreviated currency name \(country): \(shortName)")
+case let .uaeDirham (country: country, shortName: shortName):
+    print("abbreviated currency name \(country): \(shortName)")
+}
+
+
+// MARK: 4. Cвязанные значения перечислений
+// Это значит, вам необходимо будет задать тип перечисления (он может быть любой), который вам потребуется в работе. После этого вы можете присваивать значения выбранного типа для членов перечисления
+
+// Здесь мы создали перечисление и указали в качестве связанного типа данных Int и, соответственно, мы должны присвоить значения указанного типа
+enum myFamilyAge: Int {
+    case mother = 45
+    case father = 54
+    case brother = 15
+    case me = 140
+}
+
+// MARK: 5. Счётчик членов перечисления
+
+// Если вы укажете, к примеру, связанный тип для перечисления как Int, а потом первому члену присвоите значение, например, один, то все последующие члены пройдут автоматический процесс присвоения +1 от предыдущего значения
+// Итак, у нас есть перечисление (воспользуемся предыдущим примером), и нам необходимо получить значения этих членов. Для этого нам нужно получить доступ к связанным значениям. Это делается несложно. Делаем всё как всегда: создаём константу и ей присваиваем какой-то член перечисления numbersParticipantsHalfMarathon, до этого этапа вы и сами доходили ранее.
+// После этого через точку получаем доступ к связанному значению, используем ключевое слово rawValue. Давайте выведем в консоль номера наших бегунов:
+enum numbersParticipantsHalfMarathon: Int {
+    case one = 1
+    case two
+    case three
+    case nineHundredNinetyNine = 999
+}
+
+let one = numbersParticipantsHalfMarathon.one
+let two = numbersParticipantsHalfMarathon.two
+let three = numbersParticipantsHalfMarathon.three
+let nineHundredNinetyNine = numbersParticipantsHalfMarathon.nineHundredNinetyNine
+
+print(one.rawValue)
+print(two.rawValue)
+print(three.rawValue)
+print(nineHundredNinetyNine.rawValue)
+
+
+// Задание 1: Предлагаю написать перечисление шахматных фигур, разделив их по цветам (ещё одно перечисление). Все фигуры выведи в консоль
+
+enum Chessmen: String {
+    enum Color: String {
+        case black
+        case white
+    }
+    
+    case king = "King"
+    case queen = "Queen"
+    case rook = "Rook"
+    case elephant = "Elephant"
+    case horse = "Horse"
+    case pawn = "Pawn"
+}
+
+func showChessmen(figures: String...){
+    for figure in figures {
+        print(figure)
+    }
+}
+
+let whiteKing = "\(Chessmen.Color.white.rawValue): \(Chessmen.king.rawValue)"
+let whiteQueen = "\(Chessmen.Color.white.rawValue): \(Chessmen.queen.rawValue)"
+let whiteRook = "\(Chessmen.Color.white.rawValue): \(Chessmen.rook.rawValue)"
+let whiteElephant = "\(Chessmen.Color.white.rawValue): \(Chessmen.elephant.rawValue)"
+let whiteHorse = "\(Chessmen.Color.white.rawValue): \(Chessmen.horse.rawValue)"
+let whitePawn = "\(Chessmen.Color.white.rawValue): \(Chessmen.pawn.rawValue)"
+let blackKing = "\(Chessmen.Color.black.rawValue): \(Chessmen.king.rawValue)"
+let blackQueen = "\(Chessmen.Color.black.rawValue): \(Chessmen.queen.rawValue)"
+let blackRook = "\(Chessmen.Color.black.rawValue): \(Chessmen.rook.rawValue)"
+let blackElephant = "\(Chessmen.Color.black.rawValue): \(Chessmen.elephant.rawValue)"
+let blackHorse = "\(Chessmen.Color.black.rawValue): \(Chessmen.horse.rawValue)"
+let blackPawn = "\(Chessmen.Color.black.rawValue): \(Chessmen.pawn.rawValue)"
+
+showChessmen(figures: whiteKing, whiteQueen, whiteRook, whiteElephant, whiteHorse, whitePawn)
+showChessmen(figures: blackKing, blackQueen, blackRook, blackElephant, blackHorse, blackPawn)
+
+
+// MARK: 6. Инициализаторы
+// Теперь давайте явно используем инициализатор для перечислений.
+
+enum Planet: Int {
+    case mercury = 1
+    case venus
+    case earch
+    case mars
+    case neptun
+}
+// Создадим константу mars и воспользуемся встроенным инициализатором, который принимает на вход указатель на конкретную планету, связанный с искомым членом перечисления Planet:
+let mars = Planet.init(rawValue: 4)
+let venus = Planet.init(rawalue: 999)     // nil
+// К примеру, если вы передадите несуществующее связанное значение, то компилятор вернет вам nil:
+
+
+// MARK: 7. Вычисляемые свойства
+// Также давайте затронем свойства в перечислениях, которые будут вычислять какие-то данные. Это так называемые вычисляемые свойства, которые производят какие-то вычисления в процессе работы, изначально они не хранят никаких данных.
+// Их также можно создавать внутри перечислений для какой-либо своей логики, к примеру, давайте получим строгое значение из связанных значений
+
+enum Planet: String {
+    case mercury = "Mercury"
+    case venus = "Venus"
+    case earch = "Earch"
+    case mars = "Mars"
+    case neptun = "Neptun"
+// Теперь создадим наше вычисляемое свойство (по сути это замыкание) и назовём его description.
+// Вычисляемое свойство обязано быть переменной, так как оно выполняется после компиляции (поэтому и называется вычисляемым), в противном случае компилятор скажет вам об ошибке:
+    var description: String { return self.rawValue }
+}
+// И последнее, что нам остается, — это, создать перечисляемый экземпляр и вызвать наше вычисляемое свойство:
+let mars: Planet = .mars
+print(mars.description)
+
+
+// Задание 2: Напишите перечисление, позволяющее складывать, вычитать и делить числа
+
+enum ArithmeticExpressions {
+    case addition (Float, Float)
+    case subtraction (Float, Float)
+    case multiplication (Float, Float)
+    case division (Float, Float)
+    
+    func computation (arithmetic: ArithmeticExpressions) -> Float {
+        switch arithmetic {
+        case let.addition(numberOne, numberTwo):
+            return numberOne + numberTwo
+        case let.subtraction(numberOne, numberTwo):
+            return numberOne - numberTwo
+        case let.multiplication(numberOne, numberTwo):
+            return numberOne * numberTwo
+        case let.division(numberOne, numberTwo):
+            return numberOne / numberTwo
+        }
+    }
+}
+
+let addition = ArithmeticExpressions.addition(3, 4)
+print(addition.computation(arithmetic: addition))
+let subtraction = ArithmeticExpressions.subtraction(3, 4)
+print(addition.computation (arithmetic: subtraction))
+let multiplication = ArithmeticExpressions.multiplication(3, 4)
+print(addition.computation (arithmetic: multiplication))
+let division = ArithmeticExpressions.division(3, 4)
+print(addition.computation(arithmetic: division))
+
+
+// Задание 3: Написать улучшенную версию арифметического вычисления, которая будет использовать не одноуровневое вычисление типа 4 + 4 или 3 - 8, а двухуровневое, когда нам нужно вычислить 5 + (4 - 2).
+
+enum Arithmetic {
+ 
+  // Член перечисления, который принимает некое значение извне.
+  case number(Float)
+  /*
+   Ассоциированные члены перечисления будут использоваться рекурсивно,
+   для этого мы указываем ключевое слово indirect.
+   В качестве аргумента принимают само перечисление (Arithmetic),
+   но мы указали его при помощи ключевого слова
+   Self - указатель на конкретное перечисление/класс/структуру.
+   */
+  indirect case addition(Self, Self)
+  indirect case subtraction(Self, Self)
+  indirect case division(Self, Self)
+  indirect case multiplication(Self, Self)
+ 
+  // Функция выполняющая вычисления.
+  func expression(exp: Arithmetic) -> Float {
+ 
+    // При помощи switch программа выбирает то вычисление которое требуется.
+    switch exp {
+    case let .number(value):
+      return value
+ 
+      // Сложение.
+    case let.addition(numberOne, numberTwo):
+      return self.expression(exp: numberOne) + self.expression(exp: numberTwo)
+ 
+      // Вычитание.
+    case let .subtraction(numberOne, numberTwo):
+      return self.expression(exp: numberOne) - self.expression(exp: numberTwo)
+ 
+      // Умножение.
+    case let .division(numberOne, numberTwo):
+      return self.expression(exp: numberOne) / self.expression(exp: numberTwo)
+ 
+      // Деление.
+    case let .multiplication(numberOne, numberTwo):
+      return self.expression(exp: numberOne) * self.expression(exp: numberTwo)
+    }
+  }
+}
+ 
+// Создаем экземпляр перечисления, указываем нужное арифметическое действие и передаем значения в качестве аргументов.
+var exp = Arithmetic.subtraction(.number(6), .multiplication(.number(10), .number(1)))
+ 
+// Получаем результат вычисления.
+exp.expression(exp: exp)

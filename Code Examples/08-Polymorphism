@@ -68,4 +68,3 @@ var transports: [HasPowerReserve] = [
 for transport in transports {
     print(transport.powerReserve)
 }
-

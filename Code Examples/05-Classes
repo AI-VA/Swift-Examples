@@ -16,7 +16,7 @@ class City {
         self.population = population
     }
 }
- 
+
 let moscow = City(country: "Russia", name: "Moscow", population: 12692466)
 
 
