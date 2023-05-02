@@ -16,6 +16,9 @@
 		32606C8829F6A06E00CEBA3B /* 10-Optionals in Sources */ = {isa = PBXBuildFile; fileRef = 32606C8729F6A06E00CEBA3B /* 10-Optionals */; };
 		3278290D29F26DBB003D1678 /* 06-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3278290C29F26DBB003D1678 /* 06-Classes */; };
 		3278290F29F27656003D1678 /* 07-Inheritance in Sources */ = {isa = PBXBuildFile; fileRef = 3278290E29F27656003D1678 /* 07-Inheritance */; };
+		32895C062A00E5B900D784F1 /* 13-Collections in Sources */ = {isa = PBXBuildFile; fileRef = 32895C052A00E5B900D784F1 /* 13-Collections */; };
+		32895C082A00EBF700D784F1 /* 14-Arrays in Sources */ = {isa = PBXBuildFile; fileRef = 32895C072A00EBF700D784F1 /* 14-Arrays */; };
+		32895C0A2A014DF200D784F1 /* 15-Arrays in Sources */ = {isa = PBXBuildFile; fileRef = 32895C092A014DF200D784F1 /* 15-Arrays */; };
 		32C3A64C29E697640036B410 /* 03-Clousures in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A64B29E697640036B410 /* 03-Clousures */; };
 		32E57EDD29F3B3F3000A1718 /* 08-Polymorphism in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */; };
 		32E57EDF29F3CBED000A1718 /* 09-Encapsulation in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDE29F3CBED000A1718 /* 09-Encapsulation */; };
@@ -44,6 +47,9 @@
 		32606C8729F6A06E00CEBA3B /* 10-Optionals */ = {isa = PBXFileReference; lastKnownFileType = text; path = "10-Optionals"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3278290C29F26DBB003D1678 /* 06-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "06-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3278290E29F27656003D1678 /* 07-Inheritance */ = {isa = PBXFileReference; lastKnownFileType = text; path = "07-Inheritance"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32895C052A00E5B900D784F1 /* 13-Collections */ = {isa = PBXFileReference; lastKnownFileType = text; path = "13-Collections"; sourceTree = "<group>"; };
+		32895C072A00EBF700D784F1 /* 14-Arrays */ = {isa = PBXFileReference; lastKnownFileType = text; path = "14-Arrays"; sourceTree = "<group>"; };
+		32895C092A014DF200D784F1 /* 15-Arrays */ = {isa = PBXFileReference; lastKnownFileType = text; path = "15-Arrays"; sourceTree = "<group>"; };
 		32C3A64B29E697640036B410 /* 03-Clousures */ = {isa = PBXFileReference; lastKnownFileType = text; path = "03-Clousures"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */ = {isa = PBXFileReference; lastKnownFileType = text; path = "08-Polymorphism"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32E57EDE29F3CBED000A1718 /* 09-Encapsulation */ = {isa = PBXFileReference; lastKnownFileType = text; path = "09-Encapsulation"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -77,6 +83,9 @@
 				32606C8729F6A06E00CEBA3B /* 10-Optionals */,
 				321D3C2F29F92E0100617BCF /* 11-Strings */,
 				322554C929FB9EC50062DD02 /* 12-Enums */,
+				32895C052A00E5B900D784F1 /* 13-Collections */,
+				32895C072A00EBF700D784F1 /* 14-Arrays */,
+				32895C092A014DF200D784F1 /* 15-Arrays */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -169,6 +178,9 @@
 				32E57EDD29F3B3F3000A1718 /* 08-Polymorphism in Sources */,
 				322554CA29FB9EC50062DD02 /* 12-Enums in Sources */,
 				32C3A64C29E697640036B410 /* 03-Clousures in Sources */,
+				32895C082A00EBF700D784F1 /* 14-Arrays in Sources */,
+				32895C062A00E5B900D784F1 /* 13-Collections in Sources */,
+				32895C0A2A014DF200D784F1 /* 15-Arrays in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

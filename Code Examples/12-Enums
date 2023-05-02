@@ -24,14 +24,10 @@ enum Currencies {
 enum Currencies {
     case ruble, dollar, euro, brazilianReal, uaeDirham
 }
-
+// Первый варинат получения значения
 let currency = Currencies.dollar
 
-// Так же можно создать константу типа Currencies, а затем присвоить нужный элемент:
-enum Currencies {
-    case ruble, dollar, euro, brazilianReal, uaeDirham
-}
-// Присваивается значение константе
+// Второй вариант можно создать константу типа Currencies, а затем присвоить нужный элемент:
 let currency: Currencies
 currency = .euro
 
