@@ -18,18 +18,16 @@ var fruits: [String] = ["apple", "banana", "orange"]
 fruits[0] // apple
 fruits[1] // banana
 fruits[2] // orange
- 
+
 var numbers = [1, 2, 3]
+// Как вы видите, для того, чтобы обратиться к элементу массива, нужно после названия массива в фигурных скобках указать его индекс.
 numbers[0] // 1
 numbers[1] // 2
 numbers[2] // 3
-// Как вы видите, для того, чтобы обратиться к элементу массива, нужно после названия массива в фигурных скобках указать его индекс.
 
 
 // MARK: 2. Изменение элементов массива
 // Для того, чтобы изменить какой-то элемент массива, нужно обратиться к элементу по индексу и присвоить ему новое значение:
-
-// 1
 var fruits = ["apple", "banana", "orange"]
 fruits[0] = "peach"
 print(fruits) // ["peach", "banana", "orange"]
@@ -164,7 +162,6 @@ let shoppingList = ["milk", "bread", "water", "meat", "candy"]
 for (index, value) in shoppingList.enumerated() {
   print("\(index + 1): \(value)")
 }
- 
 //1: milk
 //2: bread
 //3: water
@@ -189,7 +186,6 @@ for row in numbers {
         print(cell)
     }
 }
-
 //1
 //2
 //3

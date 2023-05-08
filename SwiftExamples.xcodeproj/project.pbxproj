@@ -7,22 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		321D3C3029F92E0100617BCF /* 11-Strings in Sources */ = {isa = PBXBuildFile; fileRef = 321D3C2F29F92E0100617BCF /* 11-Strings */; };
-		3223F6A329F10B7A001A2732 /* 04-Structs in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A229F10B7A001A2732 /* 04-Structs */; };
-		3223F6A529F11D18001A2732 /* 05-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A429F11D18001A2732 /* 05-Classes */; };
+		320F9A2D2A08E8B300A05722 /* 18-Protocols in Sources */ = {isa = PBXBuildFile; fileRef = 320F9A2C2A08E8B300A05722 /* 18-Protocols */; };
+		321D3C3029F92E0100617BCF /* 01-Strings in Sources */ = {isa = PBXBuildFile; fileRef = 321D3C2F29F92E0100617BCF /* 01-Strings */; };
+		3223F6A329F10B7A001A2732 /* 12-Structs in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A229F10B7A001A2732 /* 12-Structs */; };
+		3223F6A529F11D18001A2732 /* 13-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A429F11D18001A2732 /* 13-Classes */; };
 		3223F6A729F158F3001A2732 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A629F158F3001A2732 /* main.swift */; };
-		322554CA29FB9EC50062DD02 /* 12-Enums in Sources */ = {isa = PBXBuildFile; fileRef = 322554C929FB9EC50062DD02 /* 12-Enums */; };
-		3259DCE829E432BF005B9391 /* 01-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 3259DCE729E432BF005B9391 /* 01-Functions */; };
-		32606C8829F6A06E00CEBA3B /* 10-Optionals in Sources */ = {isa = PBXBuildFile; fileRef = 32606C8729F6A06E00CEBA3B /* 10-Optionals */; };
-		3278290D29F26DBB003D1678 /* 06-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3278290C29F26DBB003D1678 /* 06-Classes */; };
-		3278290F29F27656003D1678 /* 07-Inheritance in Sources */ = {isa = PBXBuildFile; fileRef = 3278290E29F27656003D1678 /* 07-Inheritance */; };
-		32895C062A00E5B900D784F1 /* 13-Collections in Sources */ = {isa = PBXBuildFile; fileRef = 32895C052A00E5B900D784F1 /* 13-Collections */; };
-		32895C082A00EBF700D784F1 /* 14-Arrays in Sources */ = {isa = PBXBuildFile; fileRef = 32895C072A00EBF700D784F1 /* 14-Arrays */; };
-		32895C0A2A014DF200D784F1 /* 15-Methods in Sources */ = {isa = PBXBuildFile; fileRef = 32895C092A014DF200D784F1 /* 15-Methods */; };
-		32C3A64C29E697640036B410 /* 03-Clousures in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A64B29E697640036B410 /* 03-Clousures */; };
-		32E57EDD29F3B3F3000A1718 /* 08-Polymorphism in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */; };
-		32E57EDF29F3CBED000A1718 /* 09-Encapsulation in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDE29F3CBED000A1718 /* 09-Encapsulation */; };
-		32F807CC29E54F78002B8C5A /* 02-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 32F807CB29E54F78002B8C5A /* 02-Functions */; };
+		322554CA29FB9EC50062DD02 /* 08-Enums in Sources */ = {isa = PBXBuildFile; fileRef = 322554C929FB9EC50062DD02 /* 08-Enums */; };
+		3259DCE829E432BF005B9391 /* 09-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 3259DCE729E432BF005B9391 /* 09-Functions */; };
+		32606C8829F6A06E00CEBA3B /* 02-Optionals in Sources */ = {isa = PBXBuildFile; fileRef = 32606C8729F6A06E00CEBA3B /* 02-Optionals */; };
+		3278290D29F26DBB003D1678 /* 14-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3278290C29F26DBB003D1678 /* 14-Classes */; };
+		3278290F29F27656003D1678 /* 15-Inheritance in Sources */ = {isa = PBXBuildFile; fileRef = 3278290E29F27656003D1678 /* 15-Inheritance */; };
+		32895C062A00E5B900D784F1 /* 07-Tuples in Sources */ = {isa = PBXBuildFile; fileRef = 32895C052A00E5B900D784F1 /* 07-Tuples */; };
+		32895C082A00EBF700D784F1 /* 03-Arrays in Sources */ = {isa = PBXBuildFile; fileRef = 32895C072A00EBF700D784F1 /* 03-Arrays */; };
+		32895C0A2A014DF200D784F1 /* 04-Methods in Sources */ = {isa = PBXBuildFile; fileRef = 32895C092A014DF200D784F1 /* 04-Methods */; };
+		32C3A64C29E697640036B410 /* 11-Clousures in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A64B29E697640036B410 /* 11-Clousures */; };
+		32E57EDD29F3B3F3000A1718 /* 16-Polymorphism in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDC29F3B3F3000A1718 /* 16-Polymorphism */; };
+		32E57EDF29F3CBED000A1718 /* 17-Encapsulation in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDE29F3CBED000A1718 /* 17-Encapsulation */; };
+		32EF30C32A04DF33003D4BC9 /* 05-Dictionaries in Sources */ = {isa = PBXBuildFile; fileRef = 32EF30C22A04DF33003D4BC9 /* 05-Dictionaries */; };
+		32EF30C52A04E4AC003D4BC9 /* 06-Sets in Sources */ = {isa = PBXBuildFile; fileRef = 32EF30C42A04E4AC003D4BC9 /* 06-Sets */; };
+		32F807CC29E54F78002B8C5A /* 10-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 32F807CB29E54F78002B8C5A /* 10-Functions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,23 +41,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		321D3C2F29F92E0100617BCF /* 11-Strings */ = {isa = PBXFileReference; lastKnownFileType = text; path = "11-Strings"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3223F6A229F10B7A001A2732 /* 04-Structs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "04-Structs"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3223F6A429F11D18001A2732 /* 05-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "05-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		320F9A2C2A08E8B300A05722 /* 18-Protocols */ = {isa = PBXFileReference; lastKnownFileType = text; path = "18-Protocols"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		321D3C2F29F92E0100617BCF /* 01-Strings */ = {isa = PBXFileReference; lastKnownFileType = text; path = "01-Strings"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3223F6A229F10B7A001A2732 /* 12-Structs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "12-Structs"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3223F6A429F11D18001A2732 /* 13-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "13-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A629F158F3001A2732 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		322554C929FB9EC50062DD02 /* 12-Enums */ = {isa = PBXFileReference; lastKnownFileType = text; path = "12-Enums"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3259DCE729E432BF005B9391 /* 01-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "01-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		32606C8729F6A06E00CEBA3B /* 10-Optionals */ = {isa = PBXFileReference; lastKnownFileType = text; path = "10-Optionals"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3278290C29F26DBB003D1678 /* 06-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "06-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3278290E29F27656003D1678 /* 07-Inheritance */ = {isa = PBXFileReference; lastKnownFileType = text; path = "07-Inheritance"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		32895C052A00E5B900D784F1 /* 13-Collections */ = {isa = PBXFileReference; lastKnownFileType = text; path = "13-Collections"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		32895C072A00EBF700D784F1 /* 14-Arrays */ = {isa = PBXFileReference; lastKnownFileType = text; path = "14-Arrays"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		32895C092A014DF200D784F1 /* 15-Methods */ = {isa = PBXFileReference; lastKnownFileType = text; path = "15-Methods"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		32C3A64B29E697640036B410 /* 03-Clousures */ = {isa = PBXFileReference; lastKnownFileType = text; path = "03-Clousures"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */ = {isa = PBXFileReference; lastKnownFileType = text; path = "08-Polymorphism"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		32E57EDE29F3CBED000A1718 /* 09-Encapsulation */ = {isa = PBXFileReference; lastKnownFileType = text; path = "09-Encapsulation"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		322554C929FB9EC50062DD02 /* 08-Enums */ = {isa = PBXFileReference; lastKnownFileType = text; path = "08-Enums"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3259DCE729E432BF005B9391 /* 09-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "09-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32606C8729F6A06E00CEBA3B /* 02-Optionals */ = {isa = PBXFileReference; lastKnownFileType = text; path = "02-Optionals"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3278290C29F26DBB003D1678 /* 14-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "14-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3278290E29F27656003D1678 /* 15-Inheritance */ = {isa = PBXFileReference; lastKnownFileType = text; path = "15-Inheritance"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32895C052A00E5B900D784F1 /* 07-Tuples */ = {isa = PBXFileReference; lastKnownFileType = text; path = "07-Tuples"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32895C072A00EBF700D784F1 /* 03-Arrays */ = {isa = PBXFileReference; lastKnownFileType = text; path = "03-Arrays"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32895C092A014DF200D784F1 /* 04-Methods */ = {isa = PBXFileReference; lastKnownFileType = text; path = "04-Methods"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32C3A64B29E697640036B410 /* 11-Clousures */ = {isa = PBXFileReference; lastKnownFileType = text; path = "11-Clousures"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32E57EDC29F3B3F3000A1718 /* 16-Polymorphism */ = {isa = PBXFileReference; lastKnownFileType = text; path = "16-Polymorphism"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32E57EDE29F3CBED000A1718 /* 17-Encapsulation */ = {isa = PBXFileReference; lastKnownFileType = text; path = "17-Encapsulation"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32EC8F8A29E3D6D900AFE405 /* SwiftExamples */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftExamples; sourceTree = BUILT_PRODUCTS_DIR; };
-		32F807CB29E54F78002B8C5A /* 02-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "02-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32EF30C22A04DF33003D4BC9 /* 05-Dictionaries */ = {isa = PBXFileReference; lastKnownFileType = text; path = "05-Dictionaries"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32EF30C42A04E4AC003D4BC9 /* 06-Sets */ = {isa = PBXFileReference; lastKnownFileType = text; path = "06-Sets"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32F807CB29E54F78002B8C5A /* 10-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "10-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,21 +77,24 @@
 		3259DCE629E4321E005B9391 /* Code Examples */ = {
 			isa = PBXGroup;
 			children = (
-				3259DCE729E432BF005B9391 /* 01-Functions */,
-				32F807CB29E54F78002B8C5A /* 02-Functions */,
-				32C3A64B29E697640036B410 /* 03-Clousures */,
-				3223F6A229F10B7A001A2732 /* 04-Structs */,
-				3223F6A429F11D18001A2732 /* 05-Classes */,
-				3278290C29F26DBB003D1678 /* 06-Classes */,
-				3278290E29F27656003D1678 /* 07-Inheritance */,
-				32E57EDC29F3B3F3000A1718 /* 08-Polymorphism */,
-				32E57EDE29F3CBED000A1718 /* 09-Encapsulation */,
-				32606C8729F6A06E00CEBA3B /* 10-Optionals */,
-				321D3C2F29F92E0100617BCF /* 11-Strings */,
-				322554C929FB9EC50062DD02 /* 12-Enums */,
-				32895C052A00E5B900D784F1 /* 13-Collections */,
-				32895C072A00EBF700D784F1 /* 14-Arrays */,
-				32895C092A014DF200D784F1 /* 15-Methods */,
+				321D3C2F29F92E0100617BCF /* 01-Strings */,
+				32606C8729F6A06E00CEBA3B /* 02-Optionals */,
+				32895C072A00EBF700D784F1 /* 03-Arrays */,
+				32895C092A014DF200D784F1 /* 04-Methods */,
+				32EF30C22A04DF33003D4BC9 /* 05-Dictionaries */,
+				32EF30C42A04E4AC003D4BC9 /* 06-Sets */,
+				32895C052A00E5B900D784F1 /* 07-Tuples */,
+				322554C929FB9EC50062DD02 /* 08-Enums */,
+				3259DCE729E432BF005B9391 /* 09-Functions */,
+				32F807CB29E54F78002B8C5A /* 10-Functions */,
+				32C3A64B29E697640036B410 /* 11-Clousures */,
+				3223F6A229F10B7A001A2732 /* 12-Structs */,
+				3223F6A429F11D18001A2732 /* 13-Classes */,
+				3278290C29F26DBB003D1678 /* 14-Classes */,
+				3278290E29F27656003D1678 /* 15-Inheritance */,
+				32E57EDC29F3B3F3000A1718 /* 16-Polymorphism */,
+				32E57EDE29F3CBED000A1718 /* 17-Encapsulation */,
+				320F9A2C2A08E8B300A05722 /* 18-Protocols */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -165,22 +174,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32F807CC29E54F78002B8C5A /* 02-Functions in Sources */,
-				3278290D29F26DBB003D1678 /* 06-Classes in Sources */,
-				3259DCE829E432BF005B9391 /* 01-Functions in Sources */,
+				32F807CC29E54F78002B8C5A /* 10-Functions in Sources */,
+				3278290D29F26DBB003D1678 /* 14-Classes in Sources */,
+				3259DCE829E432BF005B9391 /* 09-Functions in Sources */,
 				3223F6A729F158F3001A2732 /* main.swift in Sources */,
-				32606C8829F6A06E00CEBA3B /* 10-Optionals in Sources */,
-				3223F6A529F11D18001A2732 /* 05-Classes in Sources */,
-				32E57EDF29F3CBED000A1718 /* 09-Encapsulation in Sources */,
-				3223F6A329F10B7A001A2732 /* 04-Structs in Sources */,
-				321D3C3029F92E0100617BCF /* 11-Strings in Sources */,
-				3278290F29F27656003D1678 /* 07-Inheritance in Sources */,
-				32E57EDD29F3B3F3000A1718 /* 08-Polymorphism in Sources */,
-				322554CA29FB9EC50062DD02 /* 12-Enums in Sources */,
-				32C3A64C29E697640036B410 /* 03-Clousures in Sources */,
-				32895C082A00EBF700D784F1 /* 14-Arrays in Sources */,
-				32895C062A00E5B900D784F1 /* 13-Collections in Sources */,
-				32895C0A2A014DF200D784F1 /* 15-Methods in Sources */,
+				32606C8829F6A06E00CEBA3B /* 02-Optionals in Sources */,
+				320F9A2D2A08E8B300A05722 /* 18-Protocols in Sources */,
+				3223F6A529F11D18001A2732 /* 13-Classes in Sources */,
+				32E57EDF29F3CBED000A1718 /* 17-Encapsulation in Sources */,
+				3223F6A329F10B7A001A2732 /* 12-Structs in Sources */,
+				321D3C3029F92E0100617BCF /* 01-Strings in Sources */,
+				32EF30C32A04DF33003D4BC9 /* 05-Dictionaries in Sources */,
+				3278290F29F27656003D1678 /* 15-Inheritance in Sources */,
+				32E57EDD29F3B3F3000A1718 /* 16-Polymorphism in Sources */,
+				322554CA29FB9EC50062DD02 /* 08-Enums in Sources */,
+				32C3A64C29E697640036B410 /* 11-Clousures in Sources */,
+				32EF30C52A04E4AC003D4BC9 /* 06-Sets in Sources */,
+				32895C082A00EBF700D784F1 /* 03-Arrays in Sources */,
+				32895C062A00E5B900D784F1 /* 07-Tuples in Sources */,
+				32895C0A2A014DF200D784F1 /* 04-Methods in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

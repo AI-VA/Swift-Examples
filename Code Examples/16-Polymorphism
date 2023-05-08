@@ -1,9 +1,8 @@
 import Foundation
 
 
-// MARK: 1. Инкапсуляция и области видимости
-// Инкапсулировать означает поместить что-то в капсулу, т.е. что-то скрыть, спрятать или защитить.
-
+// MARK: 1. Полиморфизм
+// Полиморфизм — это возможность работать с несколькими типами так, как будто это один и тот же тип. При этом поведение объектов будет разным в зависимости от типа, к которому они принадлежат.
 class Transoprt {
     var name: String
     var maxSpeed: Int
@@ -18,8 +17,7 @@ class Transoprt {
     }
 }
 
-// Протокол — это набор правил и требований, которые должны быть выполнены типом,
-// который их реализует (классом, структурой или перечислением).
+// Протокол — это набор правил и требований, которые должны быть выполнены типом, который их реализует (классом, структурой или перечислением).
 protocol HasPowerReserve {
     var powerReserve: Double { get }
 }
@@ -68,21 +66,3 @@ var transports: [HasPowerReserve] = [
 for transport in transports {
     print(transport.powerReserve)
 }
-
-class Plane: Transoprt {
-    init() {
-        super.init (name: "Plane", maxSpeed: 1000)
-    }
-    
-    func printMaxSpeedInMiles() {
-        print(kmToMiles(km: maxSpeed)) // передается maxSpeed из init
-    }
-    // private виден только внутри класса
-    private func kmToMiles(km: Int) -> Double {
-        let miles = Double(km) / 1.6
-        return miles
-    }
-}
-
-let plane = Plane()
-plane.printMaxSpeedInMiles()

@@ -2,7 +2,6 @@ import Foundation
 
 
 // MARK: 1. Опциональное связывание (optinal binding)
-
 let a: Int = 1
 let b: Int? = 1
 let c: Int? = nil
@@ -48,14 +47,12 @@ let answer = numberOne + numberTwo
 
 
 // MARK: 4. Оператор объединения по nil (nil coalescing)
-
 var numberOne: Int? = nil
 var numberTwo = 6
 let answer = (numberOne ?? 0) + numberTwo // 6
 
 
 // MARK: 5. Функция readLine
-
 print("Введите ваше имя: ")
 var name = readLine() ?? ""
 print(name)
