@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		320F9A2D2A08E8B300A05722 /* 18-Protocols in Sources */ = {isa = PBXBuildFile; fileRef = 320F9A2C2A08E8B300A05722 /* 18-Protocols */; };
+		320F9A2F2A0A183500A05722 /* 19-Protocols in Sources */ = {isa = PBXBuildFile; fileRef = 320F9A2E2A0A183500A05722 /* 19-Protocols */; };
 		321D3C3029F92E0100617BCF /* 01-Strings in Sources */ = {isa = PBXBuildFile; fileRef = 321D3C2F29F92E0100617BCF /* 01-Strings */; };
 		3223F6A329F10B7A001A2732 /* 12-Structs in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A229F10B7A001A2732 /* 12-Structs */; };
 		3223F6A529F11D18001A2732 /* 13-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A429F11D18001A2732 /* 13-Classes */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		320F9A2C2A08E8B300A05722 /* 18-Protocols */ = {isa = PBXFileReference; lastKnownFileType = text; path = "18-Protocols"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		320F9A2E2A0A183500A05722 /* 19-Protocols */ = {isa = PBXFileReference; lastKnownFileType = text; path = "19-Protocols"; sourceTree = "<group>"; };
 		321D3C2F29F92E0100617BCF /* 01-Strings */ = {isa = PBXFileReference; lastKnownFileType = text; path = "01-Strings"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A229F10B7A001A2732 /* 12-Structs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "12-Structs"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A429F11D18001A2732 /* 13-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "13-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -95,6 +97,7 @@
 				32E57EDC29F3B3F3000A1718 /* 16-Polymorphism */,
 				32E57EDE29F3CBED000A1718 /* 17-Encapsulation */,
 				320F9A2C2A08E8B300A05722 /* 18-Protocols */,
+				320F9A2E2A0A183500A05722 /* 19-Protocols */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F807CC29E54F78002B8C5A /* 10-Functions in Sources */,
+				320F9A2F2A0A183500A05722 /* 19-Protocols in Sources */,
 				3278290D29F26DBB003D1678 /* 14-Classes in Sources */,
 				3259DCE829E432BF005B9391 /* 09-Functions in Sources */,
 				3223F6A729F158F3001A2732 /* main.swift in Sources */,

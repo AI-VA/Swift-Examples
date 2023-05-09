@@ -2,6 +2,7 @@ import Foundation
 
 
 // MARK: 1. Clousures
+
 func handler(text: String, closure: (String) -> ()) {
   let concatenateStrings = text + "SkillFactory"
   closure(concatenateStrings)
@@ -46,6 +47,7 @@ cigaretteVendingMachine(personAge: 4, closure: { $0 > 18 })
 
 
 // MARK: 3. Variable closures
+
 let myClosure: () -> () = {
   print("Hello from my closure")
 }
@@ -71,6 +73,7 @@ print(accountingReport("Semen", 23, "IOS-developer", 1209.9))
 
 
 // MARK: 4. Mapping functions
+
 func sumNumbers(_ n1: Int) -> (Int) -> Int {
   return { return n1 + $0 }
 }

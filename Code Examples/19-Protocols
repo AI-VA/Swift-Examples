@@ -1,0 +1,361 @@
+import Foundation
+
+
+// MARK: 1. Реализация класса по протоколу
+// Как вы видели из предыдущих примеров, протоколы прекрасно работают в связке с классами. И множественное наследование становится с ними возможным. Но что, если в вашем приложении есть некий божественный класс, от которого вам нужно наследоваться, а также есть протоколы, которые нужно реализовывать, что же делать?
+// На самом деле здесь нет ничего сложного. Еще раз вспомним, что множественное наследование классами не поддерживается.
+
+class SquadCanids {
+    // sone code
+}
+
+class Animal {
+    // some code
+}
+
+class Dog: SquadCanids, Animal { // Error
+    // some code
+}
+
+// Можно, конечно же, наследоваться последовательно, но речь сейчас о протоколах :)
+// Если у нас есть некий божественный класс, без которого «как без воды – ни туды, ни сюды», нам нужно указывать его первым (но только один), а затем все остальные протоколы, которые необходимы под нашу реализацию.
+// Важно! Множественное наследование классами классов не поддерживается.
+
+// Давайте напишем приложение для ветеринарной клиники «Осмотр у ветеринара».
+// У нас будет один божественный класс Dog, он будет реализовывать протокол SquadCanids (псовые) (ведь в клинике могут лечить разных животных), который описывает общие черты псовых: количество глаз, ушей, хвост и клыки. Все эти свойства не могут измениться.
+// Далее у нас будут дополнительные протоколы: Commands и Bark, описывающие умеет ли пёс лаять (вроде все псы умеют лаять) и какие команды они знают.
+// Нам необходимо будет создать класс Bobtail, который наследуется от Dog и реализует дополнительные протоколы Commands и Bark.
+// После того, как мы напишем наш код, нам необходимо вывести в консоль заключение врача :)
+
+protocol SquadCanids {
+    var ears: Int { get }
+    var eyes: Int { get }
+    var tail: Int { get }
+    var fangs: Bool { get }
+}
+
+protocol Bark {
+    var dogBark: Bool {get}
+}
+
+protocol Commands {
+    var dogCommands: [String] {get set}
+}
+
+// MARK: God class Dog
+class Dog: SquadCanids {
+    // MARK: Realized protocol
+    private (set) var ears: Int = 2
+    private (set) var eyes: Int = 2
+    private (set) var tail: Int = 1
+    private (set) var fangs: Bool = true
+    // MARK: Initializer Dog
+    init(dogNickname: String) {
+        self.dogNickname = dogNickname
+    }
+    // MARK: Dog property
+    var dogNickname: String
+    var nickname: String {
+        get {
+            return dogNickname
+        }
+        set {
+            dogNickname = newValue
+        }
+    }
+}
+// MARK: Come Dog class
+class Bobtail: Dog, Bark, Commands { // Наследуется и реализует два протокола
+    private (set) var dogBark: Bool = true
+    var dogCommands: [String]
+    
+    init(dogNickname: String, commands: [String]) {
+        dogCommands = commands
+        super.init(dogNickname: dogNickname)
+    }
+}
+// MARK: Come Dog
+let bobtailJack = Bobtail(dogNickname: "Jack", commands: ["sit","lie down", "serve"])
+
+print(
+  """
+  Пес по имени \(bobtailJack.dogNickname) умеет лаять: \(bobtailJack.dogBark),
+  у него здоровые зубы: \(bobtailJack.fangs) ,
+  имеет \(bobtailJack.tail) хвост,
+  \(bobtailJack.eyes) глаза,
+  \(bobtailJack.ears) уха,
+  знает команды: \(bobtailJack.dogCommands).
+  По заключению врача пес здоров!!
+  """
+)
+
+// Вот такое вот у нас приложение для ветеринарной клиники! Как вы видите, мы без проблем унаследовались от класса, затем подключили протоколы.
+// В одном примере мы посмотрели на практике множественное наследование и наследование от класса. Как вы уже понимаете, реализовывать протоколы могут не только классы, но и структуры и перечисления.
+
+// Давайте создадим некий протокол, который будет обязывать реализовать некий метод. А структура SomeStruct и перечисление SomeEnum в свою очередь реализуют SomeProtocol:
+protocol SomeProtocol {
+    func someMethod()
+}
+
+struct SomeStruct: SomeProtocol {
+    func someMethod() {
+        print("Struct")
+    }
+}
+
+enum SomeEnum: SomeProtocol {
+    case one
+    case two
+    
+    func someMethod() {
+        switch self {
+        case .one:
+            print("One")
+        case .two:
+            print ("Two" )
+        }
+    }
+}
+
+let someEnum = SomeEnum.one
+someEnum.someMethod()
+let someStruct = SomeStruct()
+someStruct.someMethod()
+
+// Как вы видите, нет абсолютно никаких проблем с реализацией протоколов, как со структурами, так и с перечислениями. Но есть нюансы, которые нужно учитывать — это когда наш протокол содержит какие-то свойства, которые мы решили применить к перечислениям. Данная возможность не поддерживается.
+// Для того, чтобы исключить данную ошибку, необходимо ставить static перед переменной, и тогда вы сможете использовать свойство для перечисления.
+protocol SomeProtocol {
+    static var someProperty: Int { get }
+}
+
+enum SomeEnum: SomeProtocol {
+    // var someProperty: String // Error
+    static var someProperty: Int = 5
+}
+
+
+// MARK: 2.
+// В структурах у вас такой проблемы не возникнет. Также в протоколах поддерживается возможность явно указать, какой тип сможет реализовывать этот протокол. Для этого после имени протокола ставится ключевое слово: class или AnyObject. Оба они используются в ограничении протокола реализовываться структурой или перечислением. Классы прекрасно себя чувствуют, чего нельзя сказать о структурах и перечислениях.
+// class или AnyObject являются одинаковыми ограничителями по словам разработчика языка. Если мы попытаемся перейти в документацию, то увидим что class ==  AnyObject (если в кратце)
+
+// MARK: Class protocols
+protocol SomeProtocol: class {}
+protocol SomeAnotherProtocol: AnyObject {}
+
+// MARK: Classes
+class classOne: SomeProtocol {}
+class classTwo: SomeAnotherProtocol {}
+
+// MARK: Structures
+struct structOne: SomeProtocol {} // Error
+struct structTwo: SomeAnotherProtocol {}
+
+// MARK: Enums
+enum enumOne: SomeProtocol {} // Error
+enum enumOne: SomeAnotherProtocol {}
+
+
+// MARK: 3. mutating
+// Ранее мы уже пробовали использовать методы в качестве обязательно реализуемых в типах. Как мы знаем, структуры являются значимым типом, и поэтому если приходится вносить изменения в методы структур, то нужно ставить впереди func ключевое слово mutating. Это же справедливо и для протоколов, которые будут реализовываться структурами.
+
+protocol SomeProtocol {
+    mutating func someMutatingMethod (someText: String) -> String // mutating для использвания структурой
+}
+
+struct SomeStructure: SomeProtocol {
+    mutating func someMutatingMethod (someText: String) -> String {
+        let text = "Hello " + someText
+        return text
+    }
+}
+
+// Но если вы будете реализовывать протокол из предыдущего примера, в протоколе ключевое слово mutating не повлияет на работу класса.
+protocol SomeProtocol {
+    mutating func someMutatingMethod (someText: String) -> String
+}
+
+struct SomeStructure: SomeProtocol {
+    mutating func someMutatingMethod (someText: String) -> String {
+        let text = "Hello " + someText
+        return text
+    }
+}
+
+class SomeClass: SomeProtocol {
+    func someMutatingMethod (someText: String) -> String { // классу слово mutating не помеха
+        let text = "This is class " + someText
+        return text
+    }
+}
+
+// Так как вы уже проходили структуры и методы, нет смысла останавливаться на этом. Единственное, что нужно запомнить, — если вы реализуете протокол в структуре и некий метод будет изменяться, то необходимо ставить ключевое слово mutating.
+// Важно! Данное ключевое слово mutating требуется только в реализации структур.
+// Также в протоколах вы можете указывать обязательные к реализации инициализаторы. Или без конкретной реализации. Сам тип будет определять реализацию этого протокола:
+
+protocol SomeProtocol {
+    init (someText: String, someEnum: SomeEnum) // обязательные к реализации инициализаторы
+}
+
+enum SomeEnum {
+    case text
+    case number
+}
+
+struct SomeStruct: SomeProtocol {
+    let someText: String
+    let someEnum: SomeEnum
+    init (someText: String, someEnum: SomeEnum) {
+        self.someText = someText
+        self.someEnum = someEnum
+    }
+}
+
+// Но когда вы указываете в протоколе некий инициализатор, который должен быть реализован во всех подклассах какого-то класса, то нужно ставить ключевое слово required, именно оно гарантирует, что ваш инициализатор будет реализован во всех подклассах класса.
+protocol SomeProtocol {
+    init (someText: String, someEnum: SomeEnum)
+}
+
+enum SomeEnum {
+    case text
+    case number
+}
+
+class SomeClass: SomeProtocol {
+    let someText: String
+    let someEnum: SomeEnum
+    required init (someText: String, someEnum: SomeEnum) { // required это инициализатор, который должен быть реализован во всех подклассах
+        self.someText = someText
+        self.someEnum = someEnum
+    }
+}
+
+class SubClass: SomeClass {
+    let subClassText = "Some Text"
+    init() {}
+    // Error
+}
+
+// Как вы видите, теперь все подклассы родительского класса должны реализовать инициализатор, который пришел к нам из протокола.
+
+
+// Задание 14.4.1
+// Создайте протокол, который будет предписывать реализовать инициализатор, два свойства и метод.
+// В инициализатор будет передаваться имя нашего героя из фильма John Wick и его возраст. Свойства же будут принимать эти поля из инициализатора. А метод будет выводить имя и возраст нашего героя.
+
+protocol ProtocolJohnWick {
+    var johnAge: Int { get set }
+    var johnName: String { get set }
+    init (name: String, age: Int)
+    func printJohnsData()
+}
+
+class Hero: ProtocolJohnWick {
+    var johnAge: Int
+    var johnName: String
+    required init (name: String, age: Int) {
+        johnAge = age
+        johnName = name
+    }
+    func printJohnsData() {
+        print ("Name of hero: \(johnName) his age \(johnAge)")
+    }
+}
+
+let john = Hero(name: "John Wick", age: 46)
+john.printJohnsData()
+
+
+// MARK: 3. extension
+// Также есть очень крутая возможность у протоколов: как мы знаем, протокол не подразумевает под собой какую-либо реализацию, он просто указывает на то, что обязано быть реализовано кем-то другим.
+// НО! Есть небольшой лайфхак, при помощи которого протокол начинает реализовывать свойства и методы. Это расширение (extension). Именно оно помогает творить магию :)
+// Давайте создадим протокол, который будет творить магию и сам себя реализовывать! Протокол будет иметь имя, как всегда самое интересное и описательное — SomeProtocol. Далее обяжем все типы реализовать некий метод, который принимает и возвращает строку. После этого создадим структуру (а то что мы все классы, да классы) и скажем реализовать наш SomeProtocol. Но чтобы произошла магия, нам нужно расширить функцию нашего протокола.
+// Смотрим, как это делается: всего лишь ставим ключевое слово extension, а дальше в фигурных скобках, что и как нам реализовать: нашем случае, мы будем добавлять еще одну строку к той, что придет в качестве аргумента.
+// После того, как мы расширили наш протокол, нам нужно воспользоваться методом и вывести то, что получится в консоль.
+
+protocol SomeProtocol {
+    func someMethod(text: String) -> String
+}
+
+extension SomeProtocol {
+    func someMethod(text: String) -> String {
+        let newText = text + " and LastString"
+        return newText
+    }
+}
+
+struct SomeStruct: SomeProtocol {}
+let someText = SomeStruct()
+print(someText.someMethod(text: "FirstString")) // протокол реализовал сам себя через расширение
+
+// Смотрите, что происходит — наша структура совершенно пустая, одна. Не реализует протокол, что происходит. На самом деле, протокол реализовал сам себя через расширение. Круто, да? Это уличная магия.
+
+
+// Задание 14.4.2
+// Используя пример из задания 14.4.1 используйте расширение протокола, чтобы реализовать метод протокола ProtocolJohnWick. В итоге ваш класс не реализует все за исключением метода.
+
+protocol ProtocolJohnWick {
+    var johnAge: Int { get set }
+    var johnName: String { get set }
+    init (name: String, age: Int)
+    func printJohnsData()
+}
+
+extension ProtocolJohnWick {
+    func printJohnsData() {
+        print ("Name of hero: \(johnName) his age \(johnAge)")
+    }
+}
+
+class Hero: ProtocolJohnWick {
+    var johnAge: Int
+    var johnName: String
+    required init(name: String, age: Int) {
+        johnAge = age
+        johnName = name
+    }
+}
+
+let john = Hero(name: "John Wick", age: 46)
+john.printJohnsData()
+
+
+// MARK: 4. Композция
+// Как вы могли догадаться ранее …. или нет :) Протоколы могут наследовать протоколы, а не только структуры, классы и перечисления.
+
+protocol FirstProtocol {}
+protocol SecondProtocol {}
+protocol ThirdProtocol {}
+protocol SomeGodProtocol: FirstProtocol, SecondProtocol, ThirdProtoco1 {
+    // Some code
+}
+
+// А еще, хоть и не часто, но все же бывает, что вам необходимо создать композицию из протоколов. Давайте разберем этот пример в два этапа.
+// Первый этап:
+// К примеру, у нас есть один протокол с кличкой собаки и второй с ее весом и, конечно же, нам нужен тип, который реализует эти протоколы, это будет структура Dog.
+
+protocol DogName {
+    var name: String { get set }
+}
+
+protocol DogWeight {
+    var weight: String { get set }
+}
+
+struct Dog: DogName, DogWeight {
+    var name: String
+    var weight: String
+}
+
+// Первый этап закончили, теперь второй.
+// Нам необходимо создать внешнюю функцию, которая будет принимать в качестве аргумента наши протоколы, которые уже были реализованы структурой.
+
+func showYourFavoriteDog(dogProtocol: DogName & DogWeight) {
+    print("My lovely dog with name \(dogProtocol.name) and is weight \(dogProtocol.weight)")
+}
+
+let bigPig = Dog(name: "BigPig", weight: "32.5 kg")
+showYourFavoriteDog(dogProtocol: bigPig)
+
+// Как вы видите, мы передали в функцию саму структуру, которая, в свою очередь, уже реализовала нужные протоколы. Конечно, вы скажете: «Зачем так усложнять, если можно сделать и проще?»
+// Да, безусловно, можно сделать и проще. Дело в том, чтобы вы не потерялись, когда увидите нечто похожее в проекте, хоть это бывает и не часто. В общем, вы предупреждены, а значит вооружены!
+// Ну что, мы подошли к финишной прямой и готовы рассмотреть последний и в то же время важный функционал протоколов. То, с чем вы будете сталкиваться практически везде. Это делегирование!

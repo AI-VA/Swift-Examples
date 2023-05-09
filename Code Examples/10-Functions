@@ -2,6 +2,7 @@ import Foundation
 
 
 // MARK: 1. Return values
+
 func moduleInfo(topic: String, number: Int) -> String {
     "Я изучаю \(topic) из модуля \(number)"
 }
@@ -11,6 +12,7 @@ print(info)
 
 
 // MARK: 2. Default values
+
 func sayHello(name: String = "Steve") {
   print("Hello, \(name)!")
 }
@@ -22,6 +24,7 @@ sayHello(name: "Tim")
 
 
 // MARK: 3. External parameter names
+
 func codeError(codeErrorFromServer code: Int, descriptionErrorFromServer description: String) {
   print("Error: \(code) Description: \(description)")
 }
@@ -38,6 +41,7 @@ print(result)
 
 
 // MARK: 4. Functional types
+
 func isEven(number: Int) -> Bool {
     number % 2 == 0
 }
@@ -54,6 +58,7 @@ print(string)
 
 
 // MARK: 5. Nested functions
+
 func bigBoss(messageFromEmployeeJohn: inout String, messageFromEmployeeKate: inout String) {
   func employeeJohn() {
     messageFromEmployeeJohn += "I got your message boss!"
@@ -74,6 +79,7 @@ print(kateMessage)
 
 
 // MARK: 6. Recursive functions
+
 func recursiveCounter(number: Int) {
   if number < 100 {
     recursiveCounter(number: number + 1)
@@ -85,6 +91,7 @@ recursiveCounter(number: 2)
 
 
 // MARK: 7. Overloading functions (similar names)
+
 func helloFunc(param: Bool) {
   print(param)
 }

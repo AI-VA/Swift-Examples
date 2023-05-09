@@ -2,6 +2,7 @@ import Foundation
 
 
 // MARK: 1. Func without parameters
+
 func sayHello() {
   print("Hello, world!")
 }
@@ -10,6 +11,7 @@ sayHello()
 
 
 // MARK: 2. Func with parameters
+
 func printModuleInfo(topic: String, number: Int) {
   print("я изучаю \(topic) из модуля \(number)")
 }
@@ -26,6 +28,7 @@ sum(first: 4, second: 2, third: 3)
 
 
 // MARK: 3. Func without labels
+
 func sum(_ first: Int, _ second: Int, _ third: Int) {
   let sum = first + second + third
   print(sum)
@@ -37,6 +40,7 @@ sum(4, 2, 3)
 
 // MARK: 4. Inout parameters
 // Example func without inout parameters
+
 var number = 5
 func increase(_ number: Int) -> Int {
   number + 1
@@ -67,6 +71,7 @@ print("Мои новые данные: \(firstName) \(lastName)")
 
 
 // MARK: 5. Variadic parameters
+
 func add(brands: [String]) {
     for brand in brands {
         print(brand)

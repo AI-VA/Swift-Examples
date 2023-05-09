@@ -2,6 +2,7 @@ import Foundation
 
 
 // MARK: 1. Структуры
+
 struct ChessPlayer {
   var name: String
   var nickname: String
@@ -28,6 +29,7 @@ print(semen.name)
 
 // MARK: 2. Методы
 // Методы — это функции, которые ассоциируются с определенным «типом». Методы — это функции, встроенные в структуры или классы.
+
 struct ChessPlayer {
   var name: String
   var nickname: String
@@ -45,6 +47,7 @@ semen.thisIsMethod()
 
 
 // MARK: 3. Создание собственных инициализаторов
+
 struct ChessPlayer {
     let name: String = "Semen"
     let nickname: String = "Shark"
@@ -61,5 +64,5 @@ struct ChessPlayer {
     }
 }
 // Меняем свойство через свой init инициализатор
-let semen = ChessPlayer (age: 32)
+let semen = ChessPlayer(age: 32)
 semen.printChessPlayerPropery()
