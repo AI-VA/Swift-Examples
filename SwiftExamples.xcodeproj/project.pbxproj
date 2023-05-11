@@ -27,6 +27,7 @@
 		32EF30C32A04DF33003D4BC9 /* 05-Dictionaries in Sources */ = {isa = PBXBuildFile; fileRef = 32EF30C22A04DF33003D4BC9 /* 05-Dictionaries */; };
 		32EF30C52A04E4AC003D4BC9 /* 06-Sets in Sources */ = {isa = PBXBuildFile; fileRef = 32EF30C42A04E4AC003D4BC9 /* 06-Sets */; };
 		32F807CC29E54F78002B8C5A /* 10-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 32F807CB29E54F78002B8C5A /* 10-Functions */; };
+		32F92AE22A0CC3310094223A /* 20-Protocols in Sources */ = {isa = PBXBuildFile; fileRef = 32F92AE12A0CC3310094223A /* 20-Protocols */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,7 +44,7 @@
 
 /* Begin PBXFileReference section */
 		320F9A2C2A08E8B300A05722 /* 18-Protocols */ = {isa = PBXFileReference; lastKnownFileType = text; path = "18-Protocols"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		320F9A2E2A0A183500A05722 /* 19-Protocols */ = {isa = PBXFileReference; lastKnownFileType = text; path = "19-Protocols"; sourceTree = "<group>"; };
+		320F9A2E2A0A183500A05722 /* 19-Protocols */ = {isa = PBXFileReference; lastKnownFileType = text; path = "19-Protocols"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		321D3C2F29F92E0100617BCF /* 01-Strings */ = {isa = PBXFileReference; lastKnownFileType = text; path = "01-Strings"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A229F10B7A001A2732 /* 12-Structs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "12-Structs"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A429F11D18001A2732 /* 13-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "13-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -63,6 +64,7 @@
 		32EF30C22A04DF33003D4BC9 /* 05-Dictionaries */ = {isa = PBXFileReference; lastKnownFileType = text; path = "05-Dictionaries"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32EF30C42A04E4AC003D4BC9 /* 06-Sets */ = {isa = PBXFileReference; lastKnownFileType = text; path = "06-Sets"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32F807CB29E54F78002B8C5A /* 10-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "10-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32F92AE12A0CC3310094223A /* 20-Protocols */ = {isa = PBXFileReference; lastKnownFileType = text; path = "20-Protocols"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				32E57EDE29F3CBED000A1718 /* 17-Encapsulation */,
 				320F9A2C2A08E8B300A05722 /* 18-Protocols */,
 				320F9A2E2A0A183500A05722 /* 19-Protocols */,
+				32F92AE12A0CC3310094223A /* 20-Protocols */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				321D3C3029F92E0100617BCF /* 01-Strings in Sources */,
 				32EF30C32A04DF33003D4BC9 /* 05-Dictionaries in Sources */,
 				3278290F29F27656003D1678 /* 15-Inheritance in Sources */,
+				32F92AE22A0CC3310094223A /* 20-Protocols in Sources */,
 				32E57EDD29F3B3F3000A1718 /* 16-Polymorphism in Sources */,
 				322554CA29FB9EC50062DD02 /* 08-Enums in Sources */,
 				32C3A64C29E697640036B410 /* 11-Clousures in Sources */,
