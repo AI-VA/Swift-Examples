@@ -14,6 +14,8 @@
 		3223F6A529F11D18001A2732 /* 13-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A429F11D18001A2732 /* 13-Classes */; };
 		3223F6A729F158F3001A2732 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3223F6A629F158F3001A2732 /* main.swift */; };
 		322554CA29FB9EC50062DD02 /* 08-Enums in Sources */ = {isa = PBXBuildFile; fileRef = 322554C929FB9EC50062DD02 /* 08-Enums */; };
+		324FD2852A13688100440AD7 /* 21-Errors in Sources */ = {isa = PBXBuildFile; fileRef = 324FD2842A13688100440AD7 /* 21-Errors */; };
+		324FD2872A13796C00440AD7 /* 22-Generics in Sources */ = {isa = PBXBuildFile; fileRef = 324FD2862A13796C00440AD7 /* 22-Generics */; };
 		3259DCE829E432BF005B9391 /* 09-Functions in Sources */ = {isa = PBXBuildFile; fileRef = 3259DCE729E432BF005B9391 /* 09-Functions */; };
 		32606C8829F6A06E00CEBA3B /* 02-Optionals in Sources */ = {isa = PBXBuildFile; fileRef = 32606C8729F6A06E00CEBA3B /* 02-Optionals */; };
 		3278290D29F26DBB003D1678 /* 14-Classes in Sources */ = {isa = PBXBuildFile; fileRef = 3278290C29F26DBB003D1678 /* 14-Classes */; };
@@ -50,6 +52,8 @@
 		3223F6A429F11D18001A2732 /* 13-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "13-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3223F6A629F158F3001A2732 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		322554C929FB9EC50062DD02 /* 08-Enums */ = {isa = PBXFileReference; lastKnownFileType = text; path = "08-Enums"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		324FD2842A13688100440AD7 /* 21-Errors */ = {isa = PBXFileReference; lastKnownFileType = text; path = "21-Errors"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		324FD2862A13796C00440AD7 /* 22-Generics */ = {isa = PBXFileReference; lastKnownFileType = text; path = "22-Generics"; sourceTree = "<group>"; };
 		3259DCE729E432BF005B9391 /* 09-Functions */ = {isa = PBXFileReference; lastKnownFileType = text; path = "09-Functions"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32606C8729F6A06E00CEBA3B /* 02-Optionals */ = {isa = PBXFileReference; lastKnownFileType = text; path = "02-Optionals"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3278290C29F26DBB003D1678 /* 14-Classes */ = {isa = PBXFileReference; lastKnownFileType = text; path = "14-Classes"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -101,6 +105,8 @@
 				320F9A2C2A08E8B300A05722 /* 18-Protocols */,
 				320F9A2E2A0A183500A05722 /* 19-Protocols */,
 				32F92AE12A0CC3310094223A /* 20-Protocols */,
+				324FD2842A13688100440AD7 /* 21-Errors */,
+				324FD2862A13796C00440AD7 /* 22-Generics */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -182,6 +188,8 @@
 			files = (
 				32F807CC29E54F78002B8C5A /* 10-Functions in Sources */,
 				320F9A2F2A0A183500A05722 /* 19-Protocols in Sources */,
+				324FD2872A13796C00440AD7 /* 22-Generics in Sources */,
+				324FD2852A13688100440AD7 /* 21-Errors in Sources */,
 				3278290D29F26DBB003D1678 /* 14-Classes in Sources */,
 				3259DCE829E432BF005B9391 /* 09-Functions in Sources */,
 				3223F6A729F158F3001A2732 /* main.swift in Sources */,
