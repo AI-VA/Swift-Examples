@@ -24,6 +24,7 @@
 		32895C082A00EBF700D784F1 /* 03-Arrays in Sources */ = {isa = PBXBuildFile; fileRef = 32895C072A00EBF700D784F1 /* 03-Arrays */; };
 		32895C0A2A014DF200D784F1 /* 04-Methods in Sources */ = {isa = PBXBuildFile; fileRef = 32895C092A014DF200D784F1 /* 04-Methods */; };
 		32C3A64C29E697640036B410 /* 11-Clousures in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A64B29E697640036B410 /* 11-Clousures */; };
+		32D80A882A1DFB3E007560F3 /* 23-Webinar in Sources */ = {isa = PBXBuildFile; fileRef = 32D80A872A1DFB3E007560F3 /* 23-Webinar */; };
 		32E57EDD29F3B3F3000A1718 /* 16-Polymorphism in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDC29F3B3F3000A1718 /* 16-Polymorphism */; };
 		32E57EDF29F3CBED000A1718 /* 17-Encapsulation in Sources */ = {isa = PBXBuildFile; fileRef = 32E57EDE29F3CBED000A1718 /* 17-Encapsulation */; };
 		32EF30C32A04DF33003D4BC9 /* 05-Dictionaries in Sources */ = {isa = PBXBuildFile; fileRef = 32EF30C22A04DF33003D4BC9 /* 05-Dictionaries */; };
@@ -62,6 +63,7 @@
 		32895C072A00EBF700D784F1 /* 03-Arrays */ = {isa = PBXFileReference; lastKnownFileType = text; path = "03-Arrays"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32895C092A014DF200D784F1 /* 04-Methods */ = {isa = PBXFileReference; lastKnownFileType = text; path = "04-Methods"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32C3A64B29E697640036B410 /* 11-Clousures */ = {isa = PBXFileReference; lastKnownFileType = text; path = "11-Clousures"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		32D80A872A1DFB3E007560F3 /* 23-Webinar */ = {isa = PBXFileReference; lastKnownFileType = text; path = "23-Webinar"; sourceTree = "<group>"; };
 		32E57EDC29F3B3F3000A1718 /* 16-Polymorphism */ = {isa = PBXFileReference; lastKnownFileType = text; path = "16-Polymorphism"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32E57EDE29F3CBED000A1718 /* 17-Encapsulation */ = {isa = PBXFileReference; lastKnownFileType = text; path = "17-Encapsulation"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		32EC8F8A29E3D6D900AFE405 /* SwiftExamples */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftExamples; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				32F92AE12A0CC3310094223A /* 20-Protocols */,
 				324FD2842A13688100440AD7 /* 21-Errors */,
 				324FD2862A13796C00440AD7 /* 22-Generics */,
+				32D80A872A1DFB3E007560F3 /* 23-Webinar */,
 			);
 			path = "Code Examples";
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				32C3A64C29E697640036B410 /* 11-Clousures in Sources */,
 				32EF30C52A04E4AC003D4BC9 /* 06-Sets in Sources */,
 				32895C082A00EBF700D784F1 /* 03-Arrays in Sources */,
+				32D80A882A1DFB3E007560F3 /* 23-Webinar in Sources */,
 				32895C062A00E5B900D784F1 /* 07-Tuples in Sources */,
 				32895C0A2A014DF200D784F1 /* 04-Methods in Sources */,
 			);
@@ -332,7 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R2K7RN96M2;
+				DEVELOPMENT_TEAM = P8YMD5UR9U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -343,7 +347,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R2K7RN96M2;
+				DEVELOPMENT_TEAM = P8YMD5UR9U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

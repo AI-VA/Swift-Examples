@@ -1,0 +1,141 @@
+import Foundation
+
+
+// MARK: 1. Протоколы
+
+// Этот протокол дает возможность распечатать обьект teacher
+protocol HasName {
+    var name: String { get set }
+}
+
+protocol TeacherProtocol {
+    var students: [StudentProtocol] { get set }  // [StudentProtocol] это пустой массив
+}
+
+protocol StudentProtocol {
+    var teacher: TeacherProtocol? { get set }
+}
+
+class Teacher: TeacherProtocol, HasName {       // HasName дает распечатать обьект teacher
+    var name: String
+    var students: [StudentProtocol]
+    init (name: String, students: [StudentProtocol]) {
+        self.name = name
+        self.students = students
+    }
+}
+       
+class Student: StudentProtocol, HasName {       // HasName дает распечатать обьект teacher
+    var name: String
+    var teacher: TeacherProtocol?
+    init (name: String) {
+        self.name = name
+    }
+}
+
+let student1 = Student(name: "StudentNamel")
+let student2 = Student(name: "StudentName2")
+let student3 = Student(name: "StudentName3")
+
+let students = [student1, student2, student3]
+let teacher = Teacher(name: "TeacherName1", students: students)
+
+let humans: [HasName] = [student1, student2, student3, teacher]
+
+for human in humans {
+    print (human.name)
+}
+
+// Пустой протокол дает гибкость
+protocol Protocol { }
+// Так как протокол не должен иметь реализацию создается расширение
+extension Protocol {
+    func f() {
+        print ("Hello" )
+    }
+}
+// Тоже самое пустая структура ничего не делает но мы расширили функционал программы
+struct Struct: Protocol { }
+let s = Struct()
+s.f()
+
+
+// MARK: 1. Исключения
+
+// LocalizedError это протокол типа Error а String говорит от Raw value
+enum ATMError: String, LocalizedError {
+    case notEnoughCash = "Not enough cash"
+    case notEnoughDeposit = "Not enough deposit"
+    case incorrectPin = "Incorrect pin"
+    var errorDescription: String? {
+        rawValue
+    }
+}
+
+class ATM {
+    func makeOperation(pin: Int) throws -> Bool {
+        if pin == 1234 { // проверка
+            // ...
+            return true
+        } else {
+            throw ATMError.incorrectPin
+        }
+    }
+}
+
+let atm = ATM()
+
+var sucess: Bool = false
+
+do {
+sucess = try atm.makeOperation(pin: 1234) // Если пин верен вернет в sucess true
+    
+} catch {
+    if let error = error as? ATMError {
+        print(error.localizedDescription) // localizedDescription это extension типа Error выводит нормальное описание ошибки String throw ATMError.incorrectPin
+    } else {
+        print(error)
+    }
+}
+
+if sucess {
+    print("Sucess")
+}
+
+
+// MARK: 3. Generic
+
+func sum(_ a: Int, _ b: Int) -> Int {
+return a + b
+}
+
+func sum(_ a: Int, _ b: Double) -> Double {
+return Double(a) + b
+}
+
+print(sum(1, 2))
+print(sum(1, 2.5))
+
+// T абстарктный тип, Numeric это протокол который нужен для сложения чисел
+func sumNumbers<T: Numeric>(_ a: T, _ b: T) -> T {
+    return a + b
+}
+
+print(sumNumbers(1, 2))
+print(sumNumbers(1, 2.5))
+print(sumNumbers(1.5, 2))
+print(sumNumbers(1.5, 2.5))
+
+// Протокол Equatable который нужен для сравнения
+func equal<T: Equatable> (_ a: T, _ b: T) -> Bool {
+    return a == b
+}
+
+// Пример функции print
+func myPrint<T>(_ arg: T) {
+    print(arg)
+}
+
+myPrint("1234")
+myPrint(1234)
+myPrint(true)
