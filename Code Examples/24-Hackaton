@@ -53,23 +53,21 @@ enum PaymentMethod {
 
 // Банкомат это посредник между пользователем и банком
 // Банкомат, с которым мы работаем, имеет общедоступный интерфейс sendUserDataToBank
-// Этот класс принимает данные от обьекта atm443 и данные пользователя через свойство someBank по факту сервер BankApi
 class ATM {
     private let userCardId: String
     private let userCardPin: Int
-    private let action: UserActions              // enum
-    private let paymentMethod: PaymentMethod?    // enum
-    
-    private var someBank: BankApi                // !!! API
-    // enum UserActions
+    private var someBank: BankApi
+    private let action: UserActions
+    private let paymentMethod: PaymentMethod?
+ // enum UserActions
     init(userCardId: String, userCardPin: Int, someBank: BankApi, action: UserActions, paymentMethod: PaymentMethod? = nil) {
         
         self.userCardId = userCardId
         self.userCardPin = userCardPin
+        self.someBank = someBank
         self.action = action
         self.paymentMethod = paymentMethod
-        self.someBank = someBank
-        // Вызвался сразу главный метод
+        
         sendUserDataToBank(userCardId: userCardId, userCardPin: userCardPin, actions: action, payment: paymentMethod)
     }
  // Главный метод вся основная работа проходит в нем
@@ -82,8 +80,8 @@ class ATM {
             case let .userPressedPayPhone(phone): // Пополнить телефон
                 if someBank.checkUserPhone(phone: phone) { // Проверка на корректность номера
                     if let payment = payment {
-                        switch payment {
-                        case let .cash(cash: payment): // В случае выбора кеша для поплнения
+                        switch payment { // В случае выбора кеша для поплнения
+                        case let .cash(cash: payment):
                             if someBank.checkMaxUserCash(cash: payment) { // Если бабала хватает то
                                 someBank.topUpPhoneBalanceCash(pay: payment) // Вызывем метод пополнения кеша
                                 someBank.showUserToppedUpMobilePhoneCash(cash: payment) // Подтверждает пополнение
@@ -149,7 +147,7 @@ struct BankServer: BankApi {
         self.user = user
     }
     
-    public func showUserBalance() { // DescriptionTypesAvailableOperations.balance.rawValue это enum raw value
+    public func showUserBalance() {
         let report = """
     Здравствуйте, \(user.userName)
     \(DescriptionTypesAvailableOperations.balance.rawValue)
@@ -236,7 +234,7 @@ struct BankServer: BankApi {
         }
         return false
     }
-    // Реализация проверки
+    
     public func checkCurrentUser (userCardId: String, userCardPin: Int) -> Bool {
         let isCorrectId = checkId(id: userCardId, user: user)
         let isCorrectPin = checkPin(pin: userCardPin, user: user)
@@ -246,14 +244,14 @@ struct BankServer: BankApi {
         }
         return false
     }
-    // 1
+    
     private func checkPin(pin: Int, user: UserData) -> Bool {
         if pin == user.userCardPin {
             return true
         }
         return false
     }
-    // 2
+    
     private func checkId(id: String, user: UserData) -> Bool {
         if id == user.userCardId {
             return true
@@ -278,8 +276,8 @@ struct BankServer: BankApi {
         user.userBankDeposit -= pay
     }
 }
-// Пользовательские данные, которые хранятся на сервере банка (данные были внесены, когда пользователь зарегистрировался в банке)
-struct User: UserData {              // исполняет протокол
+
+struct User: UserData {
     var userName: String
     var userCardId: String
     var userCardPin: Int
@@ -289,7 +287,8 @@ struct User: UserData {              // исполняет протокол
     var userPhoneBalance: Float
 }
 
-let egor_pupkin: UserData = User(  // я так понимаю это реализация протокола
+// Пользовательские данные, которые хранятся на сервере банка (данные были внесены, когда пользователь зарегистрировался в банке)
+let egor_pupkin: UserData = User(
 userName: "Egor Pupkin",
 userCardId: "3339 0039 3312 2222",
 userCardPin: 1234,
@@ -300,15 +299,13 @@ userPhoneBalance: -34.44
 )
 
 // Какой-то банк, в котором зарегистрирован пользователь (в этом банке хранятся данные пользователя)
-// 2. Данные которые передаются в структуру BankServer которая наследует протокол BankApi
 let bankClient = BankServer(user: egor_pupkin)
-
 // Текущий банкомат, с которым мы работаем в данный момент / пользователь вводит данные и пытается выполнить некую операцию,
-// 1. Данные передаются в класс ATM
 let atm443 = ATM(
 userCardId: "3339 0039 3312 2222",
 userCardPin: 1234,
-someBank: bankClient,               // Это свойство класса ATM вызывает переменную bankClient передает данные 2. серверу
-action: .userPressedPayPhone(phone: "+7(889)-393-43-44"), // enum
-paymentMethod: .cash(cash: 1000)                          // enum
+someBank: bankClient,
+action: .userPressedBalanceBtn,
+//action: .userPressedPayPhone(phone: "+7(889)-393-43-44"),
+paymentMethod: .cash(cash: 1000)
 )
