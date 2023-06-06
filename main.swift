@@ -7,279 +7,32 @@ import Foundation
 // Запрос баланса на банковском депозите
 // Снятие наличных с банковского депозита
 // Пополнение банковского депозита наличными
-// Пополнение баланса телефона наличными или с депозита.
+// Пополнение баланса телефона наличными или с депозита
 
-
-// Представление пользовательских данных
 protocol UserData {
-  var userName: String { get }              // Имя пользователя
-  var userCardId: String { get }            // Номер карты
-  var userCardPin: Int { get }              // Пин-код
-  var userCash: Float { get set }           // Наличные пользователя
-  var userBankDeposit: Float { get set }    // Банковский депозит
-  var userPhone: String { get }             // Номер телефона
-  var userPhoneBalance: Float { get set }   // Баланс телефона
+    var userName: String { get set }
+    var userCardId: String { get set }
+    var userCardPin: Int { get set }
+    var userCash: Float { get set }
+    var userBankDeposit: Float { get set }
+    var userPhone: String { get set }
+    var userPhoneBalance: Float { get set }
 }
 
-// Тексты ошибок
-enum TextErrors: String {
-    case CARD_NUMBER_OR_PIN_ENCORRECT = "Данные карты введены неверно"
-    case ENTERED_INCORRECT_PHONE = "Введен неверный номер телефона"
-    case YOU_DONT_HAVE_ENOUGH_CASH = "У вас недостаточно наличных"
-    case YOU_DONT_HAVE_ENOUGH_FINDS_DEPOSIT = "у вас непостаточно средств на депозите"
-}
-
-// Виды операций, выбранных пользователем (подтверждение выбора)
 enum DescriptionTypesAvailableOperations: String {
-    case balance = "Вы выбрали операцию запросить баланс"
-    case phone = "Вы выбрали операцию пополнить баланс телефона"
-    case withdrawal = "Вы выбрали операцию снятия средств с депозита"
-    case topUp = "Вы выбрали операцию пополнения депозита"
+    case balance = "Вы запросили операцию баланс депозита"
+    case phone = "Вы запросили операцию пополнить телефон"
+    case withdrawal = "Вы запросили операцию снять наличные"
+    case topUp = "Вы запросили операцию пополнить депозит"
 }
 
-// Действия, которые пользователь может выбирать в банкомате (имитация кнопок)
-enum UserActions {
-    case userPressedBalanceBtn                  // запросить баланс
-    case userPressedTopUpAccount(topUp: Float)  // положить деньги на депозит
-    case userPressedWithdrawCashAccount(withdrawCash: Float) // снять деньги с депозита
-    case userPressedPayPhone(phone: String)     // оплатить телефон
+enum TextErrors: String {
+    case notCashMoney = "У вас недостаточно наличных"
+    case notDepositMoney = "У вас недостаточно средств на депозите"
 }
 
-// Способ оплаты/пополнения наличными, наличными или через депозит
-enum PaymentMethod {
-    case cash(cash: Float)
-    case deposit(deposit: Float)
-}
 
-// Банкомат это посредник между пользователем и банком
-// Банкомат, с которым мы работаем, имеет общедоступный интерфейс sendUserDataToBank
-// Этот класс принимает данные от обьекта atm443 и данные пользователя через свойство someBank по факту сервер BankApi
-class ATM {
-    private let userCardId: String
-    private let userCardPin: Int
-    private let action: UserActions              // enum
-    private let paymentMethod: PaymentMethod?    // enum
-    
-    private var someBank: BankApi                // !!! API
-    // enum UserActions
-    init(userCardId: String, userCardPin: Int, someBank: BankApi, action: UserActions, paymentMethod: PaymentMethod? = nil) {
-        
-        self.userCardId = userCardId
-        self.userCardPin = userCardPin
-        self.action = action
-        self.paymentMethod = paymentMethod
-        self.someBank = someBank
-        // Вызвался сразу главный метод
-        sendUserDataToBank(userCardId: userCardId, userCardPin: userCardPin, actions: action, payment: paymentMethod)
-    }
- // Главный метод вся основная работа проходит в нем
-    public final func sendUserDataToBank(userCardId: String, userCardPin: Int, actions: UserActions, payment: PaymentMethod?) {
-        let isUserExist = someBank.checkCurrentUser(userCardId: userCardId, userCardPin: userCardPin)
-        if isUserExist {
-            switch actions {
-            case .userPressedBalanceBtn:
-                someBank.showUserBalance()
-            case let .userPressedPayPhone(phone): // Пополнить телефон
-                if someBank.checkUserPhone(phone: phone) { // Проверка на корректность номера
-                    if let payment = payment {
-                        switch payment {
-                        case let .cash(cash: payment): // В случае выбора кеша для поплнения
-                            if someBank.checkMaxUserCash(cash: payment) { // Если бабала хватает то
-                                someBank.topUpPhoneBalanceCash(pay: payment) // Вызывем метод пополнения кеша
-                                someBank.showUserToppedUpMobilePhoneCash(cash: payment) // Подтверждает пополнение
-                            } else {
-                                someBank.showError(error: .YOU_DONT_HAVE_ENOUGH_CASH) // Если бабла не хватает
-                            } // В случае выбора депозита для поплнения
-                        case let .deposit(deposit: payment):
-                            if someBank.checkMaxAccountDeposit(withdraw: payment) {
-                                someBank.topUpPhoneBalanceDeposit(pay: payment)
-                                someBank.showUserToppedUpMobilePhoneDeposit(deposit: payment)
-                            } else {
-                                someBank.showError(error: .YOU_DONT_HAVE_ENOUGH_FINDS_DEPOSIT)
-                            }
-                        }
-                    }
-                } else {
-                    someBank.showError (error: .ENTERED_INCORRECT_PHONE)
-                }
-            case let .userPressedTopUpAccount(topUp: payment): // Пополнить счет
-                if someBank.checkMaxUserCash(cash: payment) {
-                    someBank.putCashDeposit(topUp: payment)
-                    someBank.showTopUpAccount(cash: payment)
-                } else {
-                    someBank.showError(error: .YOU_DONT_HAVE_ENOUGH_CASH)
-                }
-            case let .userPressedWithdrawCashAccount(withdrawCash): // Снять наличные со счета
-                if someBank.checkMaxAccountDeposit(withdraw: withdrawCash) {
-                    someBank.getCashFromDeposit(cash: withdrawCash)
-                    someBank.showWithdrawalDeposit(cash: withdrawCash)
-                } else {
-                    someBank.showError(error: .YOU_DONT_HAVE_ENOUGH_FINDS_DEPOSIT)
-                }
-            } // Если пользователь существует выполняеться до этого блока
-        } else {
-            someBank.showError(error: .CARD_NUMBER_OR_PIN_ENCORRECT)
-        }
-    }
-}
-// Протокол по работе с банком предоставляет доступ к данным пользователя зарегистрированного в банке
-protocol BankApi {
-    func showUserBalance()
-    func showUserToppedUpMobilePhoneCash(cash: Float)
-    func showUserToppedUpMobilePhoneDeposit(deposit: Float)
-    func showWithdrawalDeposit(cash: Float)
-    func showTopUpAccount(cash: Float)
-    func showError(error: TextErrors)
-    
-    func checkUserPhone(phone: String) -> Bool
-    func checkMaxUserCash(cash: Float) -> Bool
-    func checkMaxAccountDeposit(withdraw: Float) -> Bool
-    func checkCurrentUser(userCardId: String, userCardPin: Int) -> Bool
-    
-    mutating func topUpPhoneBalanceCash(pay: Float)
-    mutating func topUpPhoneBalanceDeposit(pay: Float)
-    mutating func getCashFromDeposit(cash: Float)
-    mutating func putCashDeposit(topUp: Float)
-}
-
-struct BankServer: BankApi {
-    private var user: UserData
-    
-    init(user: UserData) {
-        self.user = user
-    }
-    
-    public func showUserBalance() { // DescriptionTypesAvailableOperations.balance.rawValue это enum raw value
-        let report = """
-    Здравствуйте, \(user.userName)
-    \(DescriptionTypesAvailableOperations.balance.rawValue)
-    Ваш баланс депозита составляет: \(user.userBankDeposit) рублей
-    Хорошего дня!
-    """
-        print(report)
-    }
-    
-    public func showUserToppedUpMobilePhoneCash (cash: Float) {
-        let report = """
-    Здравствуйте, \(user .userName)
-    \(DescriptionTypesAvailableOperations.phone.rawValue)
-    Вы пополнили баланс наличными на сумму: \(cash)
-    У вас осталось \(user.userCash) рублей наличными
-    Баланс вашего телефона составляет: \(user.userPhoneBalance) рублей
-    Хорошего дня!
-    """
-        print(report)
-    }
-    
-    public func showUserToppedUpMobilePhoneDeposit(deposit: Float) {
-        let report = """
-    Здравствуйте, \(user.userName)
-    \(DescriptionTypesAvailableOperations.phone.rawValue)
-    Вы пополнили баланс с депозитных средств на сумму: \(deposit)
-    У вас осталось на депозите: \(user.userBankDeposit)
-    Баланс вашего телефона составляет: \(user.userPhoneBalance) рублей
-    Хорошего дня!
-    """
-        print(report)
-    }
-    
-    func showWithdrawalDeposit(cash: Float) {
-        let report = """
-    Здравствуйте, \(user.userName)
-    \(DescriptionTypesAvailableOperations.withdrawal.rawValue)
-    Вы сняли с депозита средства на сумму: \(cash)
-    У вас осталось на депозите: \(user .userBankDeposit) рублей
-    У вас осталось наличных: \(user.userCash) рублей
-    Хорошего дня!
-    """
-        print(report)
-    }
-    
-    func showTopUpAccount(cash: Float) {
-        let report = """
-    Здравствуйте, \(user.userName)
-    \(DescriptionTypesAvailableOperations.topUp.rawValue)
-    Вы пополнили депозит на сумму: \(cash)
-    Сумма депозита составляет : \(user.userBankDeposit) рублей
-    У вас осталось наличных: \(user.userCash) рублей
-    Хорошего дня!
-    """
-        print(report)
-    }
-    
-    func showError(error: TextErrors) {
-        let error = """
-    Здравствуйте, \(user.userName)
-    Ошибка: \(error.rawValue)
-    Хорошего дня!
-    """
-        print(error)
-    }
-    
-    public func checkMaxAccountDeposit(withdraw: Float) -> Bool {
-        if withdraw <= user.userBankDeposit {
-            return true
-        }
-        return false
-    }
-    
-    public func checkMaxUserCash(cash: Float) -> Bool{
-        if cash <= user.userCash {
-            return true
-        }
-        return false
-    }
-    
-    public func checkUserPhone(phone: String) -> Bool {
-        if phone == user.userPhone {
-            return true
-        }
-        return false
-    }
-    // Реализация проверки
-    public func checkCurrentUser (userCardId: String, userCardPin: Int) -> Bool {
-        let isCorrectId = checkId(id: userCardId, user: user)
-        let isCorrectPin = checkPin(pin: userCardPin, user: user)
-        
-        if isCorrectId && isCorrectPin {
-            return true
-        }
-        return false
-    }
-    // 1
-    private func checkPin(pin: Int, user: UserData) -> Bool {
-        if pin == user.userCardPin {
-            return true
-        }
-        return false
-    }
-    // 2
-    private func checkId(id: String, user: UserData) -> Bool {
-        if id == user.userCardId {
-            return true
-        }
-        return false
-    }
-    
-    public mutating func putCashDeposit(topUp: Float) {
-        user.userBankDeposit += topUp
-        user.userCash -= topUp
-    }
-    public mutating func getCashFromDeposit(cash: Float) {
-        user.userBankDeposit -= cash
-        user.userCash += cash
-    }
-    public mutating func topUpPhoneBalanceCash(pay: Float) {
-        user.userPhoneBalance += pay
-        user.userCash -= pay
-    }
-    public mutating func topUpPhoneBalanceDeposit(pay: Float) {
-        user.userPhoneBalance += pay
-        user.userBankDeposit -= pay
-    }
-}
-// Пользовательские данные, которые хранятся на сервере банка (данные были внесены, когда пользователь зарегистрировался в банке)
-struct User: UserData {              // исполняет протокол
+struct User: UserData {
     var userName: String
     var userCardId: String
     var userCardPin: Int
@@ -289,26 +42,144 @@ struct User: UserData {              // исполняет протокол
     var userPhoneBalance: Float
 }
 
-let egor_pupkin: UserData = User(  // я так понимаю это реализация протокола
-userName: "Egor Pupkin",
-userCardId: "3339 0039 3312 2222",
-userCardPin: 1234,
-userCash: 2234.34,
-userBankDeposit: 5994.4,
-userPhone: "+7(889)-393-43-44",
-userPhoneBalance: -34.44
-)
+protocol BankApi {
+    var user: UserData { get set }
+    func execute(operation: ATM.Operation)
+}
+
+class BankServer: BankApi {
+    var user: UserData
+    init(user: UserData) {
+        self.user = user
+    }
+
+    func execute(operation: ATM.Operation) {
+        switch operation {
+        case .checkBalance:
+            printReport(greeting: "Здравствуйте, \(user.userName)",
+                        description: DescriptionTypesAvailableOperations.balance.rawValue,
+                        content: "Ваш баланс депозита составляет: \(user.userBankDeposit) рублей")
+        case .topUpMobileFromCash(let amount):
+            if checkMaxUserCash(cash: amount) {
+                user.userPhoneBalance += amount
+                user.userCash -= amount
+                printReport(greeting: "Здравствуйте, \(user.userName)",
+                            description: DescriptionTypesAvailableOperations.phone.rawValue,
+                            content: "Вы пополнили баланс наличными на сумму: \(amount)\nУ вас осталось \(user.userCash) рублей наличными\nБаланс вашего телефона составляет: \(user.userPhoneBalance) рублей")
+            } else {
+                showError(error: .notCashMoney)
+            }
+        case .topUpMobileFromDeposit(let amount):
+            if checkMaxAccountDeposit(withdraw: amount) {
+                user.userPhoneBalance += amount
+                user.userBankDeposit -= amount
+                printReport(greeting: "Здравствуйте, \(user.userName)",
+                            description: DescriptionTypesAvailableOperations.phone.rawValue,
+                            content: "Вы пополнили баланс с депозитных средств на сумму: \(amount)\nУ вас осталось на депозите: \(user.userBankDeposit)\nБаланс вашего телефона составляет: \(user.userPhoneBalance) рублей")
+            } else {
+                showError(error: .notDepositMoney)
+            }
+        case .withdrawCash(let amount):
+            if checkMaxAccountDeposit(withdraw: amount) {
+                user.userCash += amount
+                user.userBankDeposit -= amount
+                printReport(greeting: "Здравствуйте, \(user.userName)",
+                            description: DescriptionTypesAvailableOperations.withdrawal.rawValue,
+                            content: "Вы сняли с депозита средства на сумму: \(amount)\nУ вас осталось на депозите: \(user.userBankDeposit) рублей\nУ вас осталось наличных: \(user.userCash) рублей")
+            } else {
+                showError(error: .notDepositMoney)
+            }
+        case .depositCash(let amount):
+            if checkMaxUserCash(cash: amount) {
+                user.userCash -= amount
+                user.userBankDeposit += amount
+                printReport(greeting: "Здравствуйте, \(user.userName)",
+                            description: DescriptionTypesAvailableOperations.topUp.rawValue,
+                            content: "Вы пополнили депозит на сумму: \(amount)\nСумма депозита составляет : \(user.userBankDeposit) рублей\nУ вас осталось наличных: \(user.userCash) рублей")
+            } else {
+                showError(error: .notCashMoney)
+            }
+        }
+    }
+    
+    private func printReport(greeting: String, description: String, content: String) {
+        let report = """
+        \(greeting)
+        \(description)
+        \(content)
+        Хорошего дня!
+        """
+        print(report)
+    }
+    
+    private func showError(error: TextErrors) {
+        let errorReport = """
+        Здравствуйте, \(user.userName)
+        Ошибка: \(error.rawValue)
+        Хорошего дня!
+        """
+        print(errorReport)
+    }
+    
+    private func checkMaxAccountDeposit(withdraw: Float) -> Bool {
+        return withdraw <= user.userBankDeposit
+    }
+    
+    private func checkMaxUserCash(cash: Float) -> Bool{
+        return cash <= user.userCash
+    }
+}
+
+class ATM {
+    var userCardId: String
+    var userCardPin: Int
+    var someBank: BankApi
+
+    enum Operation {
+        case checkBalance
+        case topUpMobileFromCash(cash: Float)
+        case topUpMobileFromDeposit(deposit: Float)
+        case withdrawCash(cash: Float)
+        case depositCash(cash: Float)
+    }
+
+    enum PaymentMethod {
+        case cash(cash: Float)
+        case card(cardNumber: String, cardPin: Int)
+    }
+
+    init(userCardId: String, userCardPin: Int, someBank: BankApi) {
+        self.userCardId = userCardId
+        self.userCardPin = userCardPin
+        self.someBank = someBank
+    }
+
+    public func execute(action: Operation) {
+        if isCurrentUser() {
+            someBank.execute(operation: action)
+        }
+    }
+
+    private func isCurrentUser() -> Bool {
+        return someBank.user.userCardId == userCardId && someBank.user.userCardPin == userCardPin
+    }
+}
+
+// Пользовательские данные, которые хранятся на сервере банка (данные были внесены, когда пользователь зарегистрировался в банке)
+let bank_user: UserData = User(userName: "User",
+                               userCardId: "3339 0039 3312 2222",
+                               userCardPin: 1234,
+                               userCash: 2234.34,
+                               userBankDeposit: 5994.4,
+                               userPhone: "+7(889)-393-43-44",
+                               userPhoneBalance: -34.44)
 
 // Какой-то банк, в котором зарегистрирован пользователь (в этом банке хранятся данные пользователя)
-// 2. Данные которые передаются в структуру BankServer которая наследует протокол BankApi
-let bankClient = BankServer(user: egor_pupkin)
+let bankClient = BankServer(user: bank_user)
 
-// Текущий банкомат, с которым мы работаем в данный момент / пользователь вводит данные и пытается выполнить некую операцию,
-// 1. Данные передаются в класс ATM
-let atm443 = ATM(
-userCardId: "3339 0039 3312 2222",
-userCardPin: 1234,
-someBank: bankClient,               // Это свойство класса ATM вызывает переменную bankClient передает данные 2. серверу
-action: .userPressedPayPhone(phone: "+7(889)-393-43-44"), // enum
-paymentMethod: .cash(cash: 1000)                          // enum
-)
+// Текущий банкомат, с которым мы работаем в данный момент
+let atm443 = ATM(userCardId: "3339 0039 3312 2222",
+                 userCardPin: 1234,
+                 someBank: bankClient)
+
+atm443.execute(action: .depositCash(cash: 2000))
